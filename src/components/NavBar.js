@@ -20,7 +20,11 @@ class NavBar extends React.Component {
 				key: 'sign-out',
 				text: 'Sign Out',
 				icon: 'sign out',
-				onClick: this.props.logout
+				onClick: () => {
+					this.props.logout()
+					console.log(this.props)
+					this.props.history.push("/")
+				}
 			}
 		]
 		return (

@@ -1,9 +1,10 @@
 import React from 'react'
 import HomeContainer from './containers/HomeContainer'
 import DashboardContainer from './containers/DashboardContainer'
+import NavBar from './components/NavBar'
 import { connect } from 'react-redux'
 import { getUser } from './actions/UserAuth'
-// import { Route, withRouter, Switch } from 'react-router-dom'
+import { Route, withRouter, Switch } from 'react-router-dom'
 
 class App extends React.Component {
 	componentDidMount() {
@@ -15,13 +16,17 @@ class App extends React.Component {
 	}
 
 	render() {
+		console.log(this.props);
 		return (
 			<div>
-				{!this.props.loggedIn ? <HomeContainer /> : <DashboardContainer />}
+				<NavBar {...this.props}/>
+				<Route exact path='/' component={HomeContainer}/>
+				<Route path='/dashboard' component={DashboardContainer}/>
 			</div>
 		)
 	}
 }
+// {!this.props.loggedIn ? <HomeContainer /> : <DashboardContainer />}
 
 const mapStateToProps = state => {
 	return {
@@ -30,4 +35,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, { getUser })(App)
+export default withRouter(connect(mapStateToProps, { getUser })(App))

@@ -2,7 +2,7 @@ import { RestfulAdapter } from '../adapters'
 
 export const fetchLogin = (username, password) => {
 	return dispatch => {
-		RestfulAdapter.login(username, password, 'login').then(response => {
+		return RestfulAdapter.login(username, password, 'login').then(response => {
 			if (response.message) {
 				alert(response.message)
 			} else {
@@ -14,7 +14,7 @@ export const fetchLogin = (username, password) => {
 
 export const fetchSignup = (username, password) => {
 	return dispatch => {
-		RestfulAdapter.login(username, password, 'users').then(response => {
+		return RestfulAdapter.login(username, password, 'users').then(response => {
 			if (response.message) {
 				alert(response.message)
 			} else {
@@ -37,7 +37,7 @@ export const getUser = token => {
 }
 
 export const logout = () => {
-  return {
-    type: 'LOGOUT_USER'
-  }
+	return {
+		type: 'LOGOUT_USER'
+	}
 }

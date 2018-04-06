@@ -3,8 +3,6 @@ import { Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { fetchLogin, fetchSignup } from '../actions/UserAuth'
 
-
-
 class LoginForm extends React.Component {
 	state = {
 		username: '',
@@ -18,14 +16,21 @@ class LoginForm extends React.Component {
 	}
 
 	onFormSubmit = event => {
+		// console.log(this.props);
 		event.preventDefault()
-		this.props.fetchLogin(this.state.username, this.state.password)
+		this.props.fetchLogin(this.state.username, this.state.password).then(() => {
+			this.props.history.push('/dashboard')
+		})
 	}
 
-  onFormSignup = event => {
-    event.preventDefault()
-    this.props.fetchSignup(this.state.username, this.state.password)
-  }
+	onFormSignup = event => {
+		event.preventDefault()
+		this.props
+			.fetchSignup(this.state.username, this.state.password)
+			.then(() => {
+				this.props.history.push('/dashboard')
+			})
+	}
 
 	render() {
 		return (
@@ -66,5 +71,4 @@ class LoginForm extends React.Component {
 	}
 }
 
-
-export default connect(null, { fetchLogin, fetchSignup })(LoginForm);
+export default connect(null, { fetchLogin, fetchSignup })(LoginForm)

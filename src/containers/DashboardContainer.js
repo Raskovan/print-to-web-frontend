@@ -10,8 +10,6 @@ class HomeContainer extends React.Component {
 		console.log(this.props.currentUser)
 		return (
 			<Segment basic>
-				<NavBar />
-
 				<Grid>
 					<Grid.Row>
 						<Grid.Column width={8}>

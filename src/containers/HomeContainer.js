@@ -8,8 +8,7 @@ class HomeContainer extends React.Component {
 	render() {
 		return (
 			<Segment basic>
-				<NavBar />
-				<LoginForm signup={this.props.signupFn}/>
+				<LoginForm {...this.props} />
 			</Segment>
 		)
 	}
