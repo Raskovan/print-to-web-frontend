@@ -24,15 +24,19 @@ export const fetchSignup = (username, password) => {
 	}
 }
 
-export const getUser = token => {
+export const getUser = (token, history) => {
 	return dispatch => {
-		RestfulAdapter.getUser(token, 'get_user').then(response => {
-			if (response.message) {
-				alert(response.message)
-			} else {
-				dispatch({ type: 'GET_USER', payload: response })
-			}
-		})
+		RestfulAdapter.getUser(token, 'get_user')
+			.then(response => {
+				if (response.message) {
+					alert(response.message)
+				} else {
+					dispatch({ type: 'GET_USER', payload: response })
+				}
+			})
+			.then(() => {
+				history.push('/dashboard')
+			})
 	}
 }
 

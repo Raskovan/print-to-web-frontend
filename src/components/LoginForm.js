@@ -16,7 +16,6 @@ class LoginForm extends React.Component {
 	}
 
 	onFormSubmit = event => {
-		// console.log(this.props);
 		event.preventDefault()
 		this.props.fetchLogin(this.state.username, this.state.password).then(() => {
 			this.props.history.push('/dashboard')

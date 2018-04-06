@@ -1,11 +1,16 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
+// import NavBar from '../components/NavBar'
 import UploadForm from '../components/UploadForm'
 import { Segment, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { logout } from '../actions/UserAuth'
 
 class HomeContainer extends React.Component {
+	componentDidMount() {
+		if (!this.props.currentUser) {
+			this.props.history.push('/')
+		}
+	}
 	render() {
 		console.log(this.props.currentUser)
 		return (
@@ -14,11 +19,9 @@ class HomeContainer extends React.Component {
 					<Grid.Row>
 						<Grid.Column width={8}>
 							Upload Images
-              <UploadForm />
+							<UploadForm />
 						</Grid.Column>
-						<Grid.Column width={8}>
-							Your Articles
-						</Grid.Column>
+						<Grid.Column width={8}>Your Articles</Grid.Column>
 					</Grid.Row>
 				</Grid>
 			</Segment>
