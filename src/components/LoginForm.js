@@ -1,5 +1,13 @@
 import React from 'react'
-import { Form } from 'semantic-ui-react'
+import {
+	Form,
+	Grid,
+	Header,
+	Image,
+	Segment,
+	Button,
+	Message
+} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { fetchLogin, fetchSignup } from '../actions/UserAuth'
 
@@ -33,38 +41,45 @@ class LoginForm extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<Form onSubmit={this.onFormSubmit}>
-					<Form.Group inline>
-						<Form.Input
-							name="username"
-							placeholder="Username"
-							onChange={this.handleInput}
-						/>
-						<Form.Input
-							name="password"
-							placeholder="Password"
-							onChange={this.handleInput}
-						/>
-						<Form.Button content="Log In" />
-					</Form.Group>
-				</Form>
-
-				<Form onSubmit={this.onFormSignup}>
-					<Form.Group inline>
-						<Form.Input
-							name="username"
-							placeholder="Username"
-							onChange={this.handleInput}
-						/>
-						<Form.Input
-							name="password"
-							placeholder="Password"
-							onChange={this.handleInput}
-						/>
-						<Form.Button content="Sign Up" />
-					</Form.Group>
-				</Form>
+			<div className="login-form">
+				<style>{`
+		body > div,
+		body > div > div,
+		body > div > div > div.login-form {
+			height: 100%;
+		}
+	`}</style>
+				<Grid
+					textAlign="center"
+					style={{ height: '100%' }}
+					verticalAlign="middle">
+					<Grid.Column style={{ maxWidth: 450 }}>
+						<Header as="h2" color="teal" textAlign="center">
+							{' '}
+							Log-in to your account
+						</Header>
+						<Form onSubmit={this.onFormSubmit}>
+							<Segment>
+								<Form.Input
+									fluid
+									name="username"
+									placeholder="Username"
+									onChange={this.handleInput}
+								/>
+								<Form.Input
+									fluid
+									name="password"
+									placeholder="Password"
+									onChange={this.handleInput}
+								/>
+								<Form.Button fluid content="Log In" />
+							</Segment>
+						</Form>
+						<Message>
+							New to us? <a href="#">Sign Up</a>
+						</Message>
+					</Grid.Column>
+				</Grid>
 			</div>
 		)
 	}

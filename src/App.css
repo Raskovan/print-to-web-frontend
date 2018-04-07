@@ -30,3 +30,32 @@
 .ui.inverted.segment {
     border-radius: 0px !important;
 }
+
+.ui.inverted.button {
+    border-radius: 0px !important;
+}
+
+.ui.button {
+    border-radius: 0px !important;
+}
+
+.ui.tiny.modal {
+    border-radius: 0px !important;
+}
+
+.ui.input {
+    border-radius: 0px !important;
+}
+
+.ui.image {
+      position: absolute;
+      padding-right: 28px;
+    }
+
+    .ui.secondary.menu {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+    .ui.container {
+      width: 100% !important;
+    }

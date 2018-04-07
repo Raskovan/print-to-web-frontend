@@ -2,13 +2,14 @@ import React from 'react'
 import HomeContainer from './containers/HomeContainer'
 import DashboardContainer from './containers/DashboardContainer'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 import { connect } from 'react-redux'
 import { getUser } from './actions/UserAuth'
 import { Route, withRouter } from 'react-router-dom'
+import { Segment, Menu } from 'semantic-ui-react'
 
 class App extends React.Component {
 	componentDidMount() {
-		// console.log(this.props.history);
 		const token = localStorage.getItem('token')
 		if (token && !this.props.currentUser) {
 			this.props.getUser(token, this.props.history)
@@ -16,12 +17,14 @@ class App extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div>
-				<NavBar {...this.props} />
-				<Route exact path="/" component={HomeContainer} />
-				<Route path="/dashboard" component={DashboardContainer} />
+				<Segment basic>
+					<NavBar {...this.props} />
+					<Route exact path="/" component={HomeContainer} />
+					<Route path="/dashboard" component={DashboardContainer} />
+					<Footer />
+				</Segment>
 			</div>
 		)
 	}

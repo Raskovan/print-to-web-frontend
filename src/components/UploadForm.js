@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'semantic-ui-react'
+import { fetchArticles } from '../actions/fetchArticles'
+
 
 class UploadForm extends React.Component {
   state = {
@@ -15,7 +17,7 @@ class UploadForm extends React.Component {
     fetch('http://localhost:4000/articles', {
       method: 'POST',
       body: formData
-    }).then(res => res.json()).then(response => console.log(response))
+    }).then(res => res.json()).then(response => this.props.fetchArticles())
 
 	}
 
@@ -43,4 +45,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, null)(UploadForm)
+export default connect(mapStateToProps, {fetchArticles})(UploadForm)
