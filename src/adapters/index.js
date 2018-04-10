@@ -38,4 +38,23 @@ export class RestfulAdapter {
       }
     }).then(r => r.json())
   }
+
+	static fetchAllUsers(url, route) {
+		let reqObj = {mag_url: url}
+    return fetch(`${baseUrl}/${route}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accepts: 'applicatin/json'
+			},
+			body: JSON.stringify(reqObj)
+    }).then(r => r.json())
+  }
+
+	static getUsers(route) {
+		console.log('FETCH');
+		return fetch(`${baseUrl}/${route}`)
+		.then(r => r.json())
+	}
+
 }

@@ -3,9 +3,7 @@ import {
 	Form,
 	Grid,
 	Header,
-	Image,
 	Segment,
-	Button,
 	Message
 } from 'semantic-ui-react'
 import { connect } from 'react-redux'
@@ -43,8 +41,6 @@ class LoginForm extends React.Component {
 		return (
 			<div className="login-form">
 				<style>{`
-		body > div,
-		body > div > div,
 		body > div > div > div.login-form {
 			height: 100%;
 		}
@@ -54,7 +50,7 @@ class LoginForm extends React.Component {
 					style={{ height: '100%' }}
 					verticalAlign="middle">
 					<Grid.Column style={{ maxWidth: 450 }}>
-						<Header as="h2" color="teal" textAlign="center">
+						<Header as="h2" color="black" textAlign="center">
 							{' '}
 							Log-in to your account
 						</Header>
@@ -76,7 +72,7 @@ class LoginForm extends React.Component {
 							</Segment>
 						</Form>
 						<Message>
-							New to us? <a href="#">Sign Up</a>
+							New to us? <a href="/magazines">Check out our directory</a>
 						</Message>
 					</Grid.Column>
 				</Grid>

@@ -47,9 +47,9 @@
     border-radius: 0px !important;
 }
 
-.ui.image {
-      position: absolute;
-      padding-right: 28px;
+.opening {
+      position: absolute !important;
+      padding-right: 28px !important;
     }
 
     .ui.secondary.menu {
@@ -58,4 +58,12 @@
     }
     .ui.container {
       width: 100% !important;
+    }
+    .ui.form textarea:not([rows]){
+      height: -webkit-fill-available !important;
+      max-height: auto;
+    }
+
+    .ui.header {
+      margin-top: 0 !important;
     }

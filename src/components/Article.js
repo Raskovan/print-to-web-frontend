@@ -1,7 +1,15 @@
 import React from 'react'
 import { Item, Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { deleteArticle } from '../actions/UserActions'
+import { Link } from "react-router-dom";
 
 class Article extends React.Component {
+
+	handleDelete = () => {
+		this.props.deleteArticle(this.props.article.id)
+	}
+
 	render() {
 
 		return (
@@ -13,11 +21,13 @@ class Article extends React.Component {
 						<p>{this.props.article.body.substring(0, 150) + '...'}</p>
 					</Item.Description>
 					<Item.Extra>
-						<Button size="mini" floated="right">
+
+						<Button as={Link} to={'/dashboard/articles/' + this.props.article.id} size="mini" floated="right">
 							Edit
 							<Icon name="right chevron" />
 						</Button>
-            <Button size="mini" floated="right">
+
+            <Button size="mini" floated="right" onClick={this.handleDelete}>
 							Delete
 						</Button>
 					</Item.Extra>
@@ -27,4 +37,4 @@ class Article extends React.Component {
 	}
 }
 
-export default Article
+export default connect(null, { deleteArticle })(Article)

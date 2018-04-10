@@ -1,11 +1,12 @@
 import React from 'react'
 // import NavBar from '../components/NavBar'
 import UploadForm from '../components/UploadForm'
+import UserMagForm from '../components/UserMagForm'
 import Article from '../components/Article'
 import { Segment, Grid, Item, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { logout } from '../actions/UserAuth'
-import { fetchArticles } from '../actions/fetchArticles'
+import { fetchArticles } from '../actions/UserActions'
 
 class DashboardContainer extends React.Component {
 
@@ -23,6 +24,7 @@ class DashboardContainer extends React.Component {
 					<Grid.Row>
 						<Grid.Column width={8}>
 							<Header as='h1'>Your Dashboard</Header>
+							<UserMagForm />
 							<UploadForm />
 						</Grid.Column>
 						<Grid.Column width={8}>

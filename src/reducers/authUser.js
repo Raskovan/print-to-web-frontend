@@ -51,6 +51,16 @@ export default (
         }
       }
 
+			case 'UPDATE_USER':
+			console.log(state);
+			return {
+				...state,
+				auth: {
+					...state.auth,
+					currentUser: action.payload
+					}
+				}
+
 		default:
 			return state
 
