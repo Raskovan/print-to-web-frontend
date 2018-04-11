@@ -6,7 +6,8 @@ import {
 	Segment,
 	Grid,
 	Form,
-	Header
+	Header,
+	Container, Divider
 } from 'semantic-ui-react'
 
 class ArticlePage extends React.Component {
@@ -30,28 +31,37 @@ class ArticlePage extends React.Component {
 	render() {
 		console.log(this.state.article)
 		return (
-      <Segment basic>
-      {'id' in this.state.article ?
-				<Grid>
-					<Grid.Row columns={1}>
-						<Grid.Column width={4} />
-						<Grid.Column width={8}>
-							<Image src={this.state.article.images[0].url} />
-						</Grid.Column>
-						<Grid.Column width={4} />
-					</Grid.Row>
+			<Container>
+				{'id' in this.state.article ? (
+					<Grid>
+						<Grid.Row columns={1}>
+							<Grid.Column width={16}>
+								<Image src={this.state.article.images[0].url} />
+							</Grid.Column>
+						</Grid.Row>
 
-					<Grid.Row columns={3}>
-						<Grid.Column width={4} />
-						<Grid.Column width={8}>
-            <Header.Subheader>{this.state.article.author}</Header.Subheader>
-            <Header style={{fontSize: '3rem'}}>{this.state.article.title}</Header>
-            <p style={{fontSize: '1.3rem'}}>{this.state.article.body}</p>
-						</Grid.Column>
-						<Grid.Column width={4} />
-					</Grid.Row>
-				</Grid> : null}
-			</Segment>
+						<Grid.Row columns={3}>
+							<Grid.Column width={2} />
+							<Grid.Column width={12}>
+								<Header style={{ fontSize: '4rem' }}>
+									{this.state.article.title}
+								</Header>
+								<Header style={{ fontSize: '1.8rem' }}>
+									{this.state.article.quote}
+								</Header>
+								<Header.Subheader>{this.state.article.author}</Header.Subheader>
+								<Divider/>
+								<Container text>
+									<p style={{ fontSize: '1.3rem' }}>
+										{this.state.article.body}
+									</p>
+								</Container>
+							</Grid.Column>
+							<Grid.Column width={2} />
+						</Grid.Row>
+					</Grid>
+				) : null}
+			</Container>
 		)
 	}
 }

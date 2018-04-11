@@ -1,10 +1,13 @@
 import React from 'react'
-import HomeContainer from './HomeContainer'
+// import HomeContainer from './HomeContainer'
 import DashboardContainer from './DashboardContainer'
 import ArticleContainer from './ArticleContainer'
+import HomepageLayout from './HomepageLayout'
+// import DesktopContainer from './DesktopContainer'
 // import MagazineHomePage from './MagazineHomePage'
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
+// import NavBar from '../components/NavBar'
+import NavBarSeman from '../components/NavBarSeman'
+import FooterSem from '../components/FooterSem'
 import { connect } from 'react-redux'
 import { getUser } from '../actions/UserAuth'
 import { Route, withRouter } from 'react-router-dom'
@@ -21,25 +24,22 @@ class PublisherContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Segment basic>
-					<NavBar {...this.props} />
-					<Route exact path="/" component={HomeContainer} />
-					<Route exact path="/dashboard" component={DashboardContainer} />
-					{this.props.articles !== undefined ?
-					<Route path='/dashboard/articles/:id'
-						render = { renderProps => {
+				<NavBarSeman {...this.props} />
+				<Route exact path="/" component={HomepageLayout} />
+				<Route exact path="/dashboard" component={DashboardContainer} />
+				{this.props.articles !== undefined ? (
+					<Route
+						path="/dashboard/articles/:id"
+						render={renderProps => {
 							let articleId = renderProps.match.params.id
-							let foundArticle = this.props.articles.find(
-					      article => {
-					        return article.id === parseInt(articleId, 10)
-					      }
-					    )
-							return (
-								< ArticleContainer {...this.props} article={foundArticle} />
-							)
-						}}></Route> : null}
-					<Footer />
-				</Segment>
+							let foundArticle = this.props.articles.find(article => {
+								return article.id === parseInt(articleId, 10)
+							})
+							return <ArticleContainer {...this.props} article={foundArticle} />
+						}}
+					/>
+				) : null}
+				<FooterSem />
 			</div>
 		)
 	}
@@ -54,4 +54,6 @@ const mapStateToProps = state => {
 	}
 }
 
-export default withRouter(connect(mapStateToProps, { getUser })(PublisherContainer))
+export default withRouter(
+	connect(mapStateToProps, { getUser })(PublisherContainer)
+)

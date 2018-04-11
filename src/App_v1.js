@@ -9,8 +9,8 @@ import ConsumerContainer from './containers/ConsumerContainer'
 // import { getUser } from './actions/UserAuth'
 import { Route, withRouter } from 'react-router-dom'
 // import { Segment } from 'semantic-ui-react'
-// import HomeSeman from './containers/HomeSeman'
-// import HomepageLayout from './containers/HomepageLayout'
+import HomeSeman from './containers/HomeSeman'
+
 
 class App extends React.Component {
 	// componentDidMount() {
@@ -23,14 +23,8 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Route exact path="/" component={PublisherContainer} />
-				<Route exact path="/dashboard" component={PublisherContainer} />
-				<Route
-					exact
-					path="/dashboard/articles/:id"
-					component={PublisherContainer}
-				/>
-				<Route path="/magazines/" component={ConsumerContainer} />
+
+				<HomeSeman/>
 			</div>
 		)
 	}

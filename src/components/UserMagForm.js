@@ -8,7 +8,7 @@ class UserMagForm extends React.Component {
 		mag_title: '',
 		mag_url: '',
 		mag_description: '',
-		editClicked: false
+		editClicked: true
 	}
 
 	editClickedForm = () => {
@@ -39,7 +39,7 @@ class UserMagForm extends React.Component {
 				mag_title: '',
 				mag_url: '',
 				mag_description: '',
-				editClicked: !this.state.editClicked
+				editClicked: true
 			})
 		)
 	}
@@ -51,12 +51,11 @@ class UserMagForm extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.editClicked)
-		return !this.props.currentUser ||
-			!this.props.currentUser.mag_title ||
-			this.state.editClicked ? (
-			<Segment basic>
-				<Form onSubmit={this.handleSubmit}>
+		return (
+			this.props.currentUser ? (
+		 (!this.props.currentUser.mag_title && this.state.editClicked) || !this.state.editClicked ? (
+			<div>
+				<Form onSubmit={this.handleSubmit} style={{textAlign: 'left'}}>
 					<Form.Input
 						fluid
 						label="Magazine title"
@@ -85,26 +84,26 @@ class UserMagForm extends React.Component {
 						<Form.Button onClick={this.cancelClickedForm}>Cancel</Form.Button>
 					</Form.Group>
 				</Form>
-			</Segment>
+			</div>
 		) : (
-			<Segment basic>
-				<List>
-					<List.Item>
+			<div>
+				<List style={{fontSize: '1.2rem', textAlign: 'left'}}>
+					<List.Item  style={{lineHeight: '2rem'}}>
 						<List.Header>Magazine title</List.Header>
 						{this.props.currentUser.mag_title}
 					</List.Item>
-					<List.Item>
+					<List.Item style={{lineHeight: '2rem'}}>
 						<List.Header>Magazine URL</List.Header>
 						<a href={'/magazines/' + this.props.currentUser.mag_url}>localhost:3000/magazines/{this.props.currentUser.mag_url}</a>
 					</List.Item>
-					<List.Item>
+					<List.Item style={{lineHeight: '2rem'}}>
 						<List.Header>Magazine Description</List.Header>
 						{this.props.currentUser.mag_description}
 					</List.Item>
 				</List>
 				<Button onClick={this.editClickedForm}>Edit</Button>
-			</Segment>
-		)
+			</div>
+		)) : null)
 	}
 }
 

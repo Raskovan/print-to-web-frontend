@@ -18,7 +18,7 @@ class Article extends React.Component {
 				<Item.Content>
 					<Item.Header as="a">{this.props.article.title}</Item.Header>
 					<Item.Description>
-						<p>{this.props.article.body.substring(0, 150) + '...'}</p>
+						<p align='left'>{this.props.article.body.substring(0, 150) + '...'}</p>
 					</Item.Description>
 					<Item.Extra>
 

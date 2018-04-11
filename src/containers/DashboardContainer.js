@@ -3,45 +3,156 @@ import React from 'react'
 import UploadForm from '../components/UploadForm'
 import UserMagForm from '../components/UserMagForm'
 import Article from '../components/Article'
-import { Segment, Grid, Item, Header } from 'semantic-ui-react'
+import {
+	Button,
+	Container,
+	Divider,
+	Grid,
+	Header,
+	Icon,
+	Image,
+	List,
+	Menu,
+	Responsive,
+	Segment,
+	Sidebar,
+	Visibility,
+	Modal,
+	Form,
+	Item
+} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { logout } from '../actions/UserAuth'
 import { fetchArticles } from '../actions/UserActions'
 
 class DashboardContainer extends React.Component {
-
 	componentDidMount() {
 		if (!this.props.currentUser) {
 			this.props.history.push('/')
 		} else {
-		this.props.fetchArticles()}
+			this.props.fetchArticles()
+		}
 	}
 
 	render() {
+		let iframe = document.getElementById('preview')
+		if (iframe) {
+			iframe.src = iframe.src
+		}
+
+// 		<Segment basic style={{padding: '0', height: '100%'}}>
+// 		<iframe
+// 			className="ui basic segment iframe_case"
+// 			width="100%"
+// 			height="100%"
+// 			id="preview"
+// 			style={{ background: 'grey' }}
+// 			src={'http://localhost:3000/magazines/' + url}
+// 		/>
+// </Segment>
+
+
+
+		let url
+		this.props.currentUser ? url = this.props.currentUser.mag_url : null
+
+
 		return (
-			<Segment basic>
-				<Grid>
-					<Grid.Row>
-						<Grid.Column width={8}>
-							<Header as='h1'>Your Dashboard</Header>
-							<UserMagForm />
-							<UploadForm />
-						</Grid.Column>
-						<Grid.Column width={8}>
-							<Header as='h1'>Your Articles</Header>
-							<Item.Group divided>
-							{this.props.articles ?
-							this.props.articles.map(article => {
-								return <Article key={article.id} article={article}/>
-							}) : null}
-							</Item.Group>
-						</Grid.Column>
-					</Grid.Row>
-				</Grid>
-			</Segment>
+			<div>
+				<Segment style={{ padding: '0em' }} vertical>
+
+					<Grid container celled="internally" columns="equal" stackable>
+						<Grid.Row textAlign="left">
+							<Grid.Column style={{ paddingBottom: '5em', paddingTop: '3em' }}>
+								<Header as="h3" style={{ fontSize: '2em' }}>
+									Your Dashboard
+									<Divider/>
+								</Header>
+								<UserMagForm />
+									<Divider
+										as="h4"
+										className="header"
+										horizontal
+										style={{ margin: '3em 0em', textTransform: 'uppercase' }}>
+										<a href="#">UPLOAD YOUR FILES HERE</a>
+									</Divider>
+								<UploadForm />
+									<Divider
+										as="h4"
+										className="header"
+										horizontal
+										style={{ margin: '3em 0em', textTransform: 'uppercase' }}>
+										<a href="#">YOUR MAGAZINE'S PAGE</a>
+									</Divider>
+
+							</Grid.Column>
+
+							<Grid.Column style={{ paddingBottom: '5em', paddingTop: '3em' }}>
+								<Header as="h3" style={{ fontSize: '2em' }}>
+									Your Articles
+									<Divider/>
+								</Header>
+								<Item.Group divided>
+									{this.props.articles
+										? this.props.articles.map(article => {
+												return <Article key={article.id} article={article} />
+										  })
+										: null}
+								</Item.Group>
+							</Grid.Column>
+						</Grid.Row>
+					</Grid>
+				</Segment>
+
+				<Segment style={{ padding: '8em 0em' }} vertical>
+					<Container text>
+						<Divider
+							as="h4"
+							className="header"
+							horizontal
+							style={{ margin: '3em 0em', textTransform: 'uppercase' }}>
+							<a href="#">EXPLANATIONS</a>
+						</Divider>
+					</Container>
+				</Segment>
+			</div>
 		)
 	}
 }
+
+// <Segment style={{ padding: '8em 0em' }} vertical>
+// <Grid>
+// 	<Grid.Row>
+// 		<Grid.Column width={8}>
+// 			<Header as="h1">Your Dashboard</Header>
+// 			<UserMagForm />
+// 			<UploadForm />
+// 			<div style={{ height: '100%' }}>
+// 				<Header as="h1">Your Homepage Preview</Header>
+				// <iframe
+				// 	className="ui basic segment iframe_case"
+				// 	width="100%"
+				// 	height="100%"
+				// 	id="preview"
+				// 	style={{ background: 'grey' }}
+				// 	src="http://localhost:3000/magazines/kidsmag"
+				// />
+// 			</div>
+// 		</Grid.Column>
+// 		<Grid.Column width={8}>
+// 			<Header as="h1">Your Articles</Header>
+// 			<Item.Group divided>
+// 				{this.props.articles
+// 					? this.props.articles.map(article => {
+// 							return <Article key={article.id} article={article} />
+// 						})
+// 					: null}
+// 			</Item.Group>
+// 		</Grid.Column>
+// 	</Grid.Row>
+// </Grid>
+// </Segment>
+
 
 const mapStateToProps = state => {
 	return {
@@ -50,9 +161,6 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, { logout, fetchArticles })(DashboardContainer)
-
-// {this.props.currentUser ?
-//   <div>
-// <Header as='h1'>Welcome, {this.props.currentUser.username}</Header><Button onClick={this.props.logout}>Log Out</Button></div>
-//  : null}
+export default connect(mapStateToProps, { logout, fetchArticles })(
+	DashboardContainer
+)

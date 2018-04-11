@@ -10,7 +10,7 @@ class HomeContainer extends React.Component {
 	render() {
 		return (
 			<Container>
-				<Image src={require('../img/shutterstock_745137418.jpg')} className='opening '/>
+				<Image src={require('../img/magazines.jpg')} className='opening '/>
 				<LoginForm {...this.props} />
 			</Container>
 		)

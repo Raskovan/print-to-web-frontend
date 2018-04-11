@@ -6,10 +6,12 @@ import MagazineArticlePage from './MagazineArticlePage'
 // import ArticleContainer from './ArticleContainer'
 import MagazineHomePage from './MagazineHomePage'
 import NavBarMag from '../components/NavBarMag'
-import Footer from '../components/Footer'
+import ConsumerFooter from '../components/ConsumerFooter'
+
+// import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Container } from 'semantic-ui-react'
 
 class ConsumerContainer extends React.Component {
 	// componentDidMount() {
@@ -22,7 +24,7 @@ class ConsumerContainer extends React.Component {
 		return (
 			<div>
 				<NavBarMag />
-				<Segment basic>
+				<Container>
 					<Route exact path="/magazines/" component={MagazineDirectory} />
 
 					<Route
@@ -40,8 +42,8 @@ class ConsumerContainer extends React.Component {
               return <MagazineArticlePage magname={magname} articleName={articleName}/>
             }}
           />
-					<Footer />
-				</Segment>
+			</Container>
+			<ConsumerFooter />
 			</div>
 		)
 	}

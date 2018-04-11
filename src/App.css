@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -25,7 +25,7 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */
 
 .ui.inverted.segment {
     border-radius: 0px !important;
@@ -66,4 +66,11 @@
 
     .ui.header {
       margin-top: 0 !important;
+    }
+
+    .iframe_case {
+      /* padding: 1em; */
+      margin-left: 1em;
+      margin-right: 1em;
+      border: 1px !important;
     }
