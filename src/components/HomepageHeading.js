@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchSignup } from '../actions/UserAuth'
@@ -6,17 +5,8 @@ import { fetchSignup } from '../actions/UserAuth'
 import {
 	Button,
 	Container,
-	Divider,
-	Grid,
 	Header,
 	Icon,
-	Image,
-	List,
-	Menu,
-	Responsive,
-	Segment,
-	Sidebar,
-	Visibility,
 	Modal,
 	Form
 } from 'semantic-ui-react'
@@ -54,20 +44,25 @@ class HomepageHeading extends Component {
 					content="Print-To-Web"
 					inverted
 					style={{
-						fontSize: '4em',
+						fontFamily: 'Abril Fatface',
+						fontSize: '6em',
 						fontWeight: 'normal',
-						marginBottom: 0,
-						marginTop: '3em'
+						marginBottom: '0.1em',
+						marginTop: '1.5em',
+						textShadow: '2px 2px 6px #000000'
 					}}
 				/>
 				<Header
 					as="h2"
-					content="Convert magazine layouts into web pages."
+					content="Convert magazine layouts into web pages"
 					inverted
 					style={{
+						fontWeight: '300',
+						fontFamily: 'Roboto',
 						fontSize: '1.7em',
-						fontWeight: 'normal',
-						marginTop: '0em'
+						marginTop: '0em',
+						marginBottom: '1.5em',
+						textShadow: '2px 2px 6px #000000'
 					}}
 				/>
 				<Button color="red" size="huge" onClick={this.show('tiny')}>

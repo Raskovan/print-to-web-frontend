@@ -1,3 +1,4 @@
+
 export const fetchArticles = () => {
 	return dispatch => {
 		const token = localStorage.getItem('token')
@@ -26,7 +27,18 @@ export const updateUserInfo = (id, mag_info) => {
 	}
 }
 
-export const deleteArticle = id => {
+// export const deleteImage = (id) => {
+// 	return dispatch => {
+// 		return fetch(`http://localhost:4000/images/${id}`, {
+// 			method: 'DELETE'
+// 		})
+// 			.then(response => response.json())
+// 			.then(response => dispatch({ type: 'DELETE_IMAGE', payload: response }))
+// 	}
+// }
+
+
+export const deleteArticle = (id, handle) => {
 	return dispatch => {
 		return fetch(`http://localhost:4000/articles/${id}`, {
 			method: 'DELETE'

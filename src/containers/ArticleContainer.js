@@ -1,7 +1,9 @@
 import React from 'react'
-import { Image, Segment, Grid, Form, Button, Container } from 'semantic-ui-react'
+import { Image, Grid, Form, Button, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { updateArticle } from '../actions/UserActions'
+import { updateArticle, fetchArticles } from '../actions/UserActions'
+import ReactFilestack from 'filestack-react'
+import { client } from 'filestack-react'
 
 class ArticleContainer extends React.Component {
 	state = {
@@ -9,7 +11,9 @@ class ArticleContainer extends React.Component {
 		title: '',
 		body: '',
 		author: '',
-		subtitle: ''
+		subtitle: '',
+		quote: '',
+		images: []
 	}
 
 	componentDidMount() {
@@ -24,9 +28,41 @@ class ArticleContainer extends React.Component {
 					body: this.props.article.body,
 					author: this.props.article.author,
 					subtitle: this.props.article.subtitle,
-					quote: this.props.article.quote
+					quote: this.props.article.quote,
+					images: this.props.article.images
 			  })
 			: null
+	}
+
+	uploadImage = response => {
+		let filestack = client.init(process.env.REACT_APP_FILESTACK_API, {
+			policy: process.env.REACT_APP_FILESTACK_POLICY,
+			signature: process.env.REACT_APP_FILESTACK_SIGNATURE
+		})
+		filestack.remove(this.props.article.images[0].handle)
+		// console.log(this.props.article.images)
+		let img_id = this.props.article.images[0].id
+		fetch(`http://localhost:4000/images/${img_id}`, {
+			method: 'DELETE'
+		})
+		// .then(res => res.json())
+		// .then(image => this.setState({images: []}))
+
+		fetch('http://localhost:4000/images', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accepts: 'application/json'
+			},
+			body: JSON.stringify({
+				article_id: this.state.article.id,
+				url: response.filesUploaded[0].url,
+				handle: response.filesUploaded[0].handle
+			})
+		})
+			.then(r => r.json())
+			.then(image => this.setState({ images: image }))
+			.then(response => this.props.fetchArticles())
 	}
 
 	handleChange = e => {
@@ -41,7 +77,8 @@ class ArticleContainer extends React.Component {
 			author: this.state.author,
 			body: this.state.body,
 			subtitle: this.state.subtitle,
-			quote: this.state.quote
+			quote: this.state.quote,
+			images: []
 		}
 		this.props.updateArticle(articleObj, this.props.article.id).then(() => {
 			this.props.history.push('/dashboard')
@@ -53,15 +90,39 @@ class ArticleContainer extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.article)
+		console.log(this.state.images)
 
 		return this.props.article ? (
-			<Container style={{marginBottom: '30px', marginTop: '30px'}}>
+			<Container style={{ marginBottom: '30px', marginTop: '30px' }}>
 				<Grid>
 					<Grid.Row columns={1}>
 						<Grid.Column width={3} />
 						<Grid.Column width={10}>
-							<Image src={this.props.article.images[0].url} />
+							<ReactFilestack
+								options={{
+									accept: 'image/*',
+									fromSources: 'local_file_system'
+								}}
+								apikey={process.env.REACT_APP_FILESTACK_API}
+								security={{
+									policy: process.env.REACT_APP_FILESTACK_POLICY,
+									signature: process.env.REACT_APP_FILESTACK_SIGNATURE
+								}}
+								buttonText="Upload Your Image"
+								buttonClass="classname"
+								onSuccess={this.uploadImage}
+								render={({ onPick }) => (
+									<Button
+										primary
+										onClick={onPick}
+										style={{ position: 'absolute', zIndex: '1' }}>
+										Replace Image
+									</Button>
+								)}
+							/>
+							{this.props.article.images ? (
+								<Image src={this.props.article.images[0].url} />
+							) : null}
 						</Grid.Column>
 						<Grid.Column width={3} />
 					</Grid.Row>
@@ -98,7 +159,7 @@ class ArticleContainer extends React.Component {
 									/>
 								</Form.Field>
 								<Form.Field
-									style={{height: '-webkit-fill-available'}}
+									style={{ height: '-webkit-fill-available' }}
 									label="Text"
 									control="textarea"
 									value={this.state.body}
@@ -132,4 +193,6 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, { updateArticle })(ArticleContainer)
+export default connect(mapStateToProps, { updateArticle, fetchArticles })(
+	ArticleContainer
+)

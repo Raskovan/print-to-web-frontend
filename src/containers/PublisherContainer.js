@@ -11,7 +11,6 @@ import FooterSem from '../components/FooterSem'
 import { connect } from 'react-redux'
 import { getUser } from '../actions/UserAuth'
 import { Route, withRouter } from 'react-router-dom'
-import { Segment } from 'semantic-ui-react'
 
 class PublisherContainer extends React.Component {
 	componentDidMount() {

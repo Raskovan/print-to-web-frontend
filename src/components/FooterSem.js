@@ -1,20 +1,10 @@
 import React from 'react'
 import {
-	Button,
 	Container,
-	Divider,
 	Grid,
 	Header,
-	Icon,
-	Image,
 	List,
-	Menu,
-	Responsive,
 	Segment,
-	Sidebar,
-	Visibility,
-	Modal,
-	Form
 } from 'semantic-ui-react'
 
 class FooterSem extends React.Component {

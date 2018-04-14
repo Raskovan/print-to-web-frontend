@@ -1,14 +1,7 @@
 import React from 'react'
 // import { Segment } from 'semantic-ui-react'
 // import { Link } from "react-router-dom";
-import {
-	Image,
-	Segment,
-	Grid,
-	Form,
-	Header,
-	Container, Divider
-} from 'semantic-ui-react'
+import { Image, Grid, Header, Container, Divider } from 'semantic-ui-react'
 
 class ArticlePage extends React.Component {
 	state = {
@@ -43,16 +36,21 @@ class ArticlePage extends React.Component {
 						<Grid.Row columns={3}>
 							<Grid.Column width={2} />
 							<Grid.Column width={12}>
-								<Header style={{ fontSize: '4rem' }}>
+								<Header style={{ fontSize: '4rem', marginBottom: '0' }}>
 									{this.state.article.title}
 								</Header>
-								<Header style={{ fontSize: '1.8rem' }}>
+								<Header style={{ fontSize: '1.8rem', fontWeight: '300', marginTop: '0' }}>
 									{this.state.article.quote}
 								</Header>
 								<Header.Subheader>{this.state.article.author}</Header.Subheader>
-								<Divider/>
-								<Container text>
-									<p style={{ fontSize: '1.3rem' }}>
+								<Divider />
+								<Container text style={{ marginBottom: '50px' }}>
+									<p
+										style={{
+											fontSize: '1.8rem',
+											lineHeight: '2.5rem',
+											fontFamily: 'EB Garamond'
+										}}>
 										{this.state.article.body}
 									</p>
 								</Container>

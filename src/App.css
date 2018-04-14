@@ -1,76 +1,71 @@
-/* .App {
-  text-align: center;
+    .ui.breadcrumb a {
+      color: grey;
+    }
+
+    .ui.breadcrumb .active.section {
+      color: white;
+    }
+
+.ui.breadcrumb a:hover {
+  color: red;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.ui.form textarea, input {
+  font-size: 1.2rem
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.ui.form {
+  font-size: 1.2rem
 }
 
-.App-title {
-  font-size: 1.5em;
+body {
+  font-family: 'Roboto:300', sans-serif;
 }
 
-.App-intro {
-  font-size: large;
+.ui.header {
+  font-family: 'Roboto:500', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.ui.label{
+  font-weight: 300 !important;
+}
+
+.thumbnail iframe {
+  width: 1440px;
+  height: 900px;
+
+}
+
+.thumbnail {
+  position: relative;
+  -ms-zoom: 0.25;
+  -moz-transform: scale(0.25);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.25);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.25);
+  -webkit-transform-origin: 0 0;
+}
+
+.thumbnail:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.thumbnail-container {
+  width: calc(1440px * 0.25);
+  height: calc(900px * 0.25);
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* .thumbnail iframe {
+  opacity: 0;
+  transition: all 300ms ease-in-out;
 } */
-
-.ui.inverted.segment {
-    border-radius: 0px !important;
-}
-
-.ui.inverted.button {
-    border-radius: 0px !important;
-}
-
-.ui.button {
-    border-radius: 0px !important;
-}
-
-.ui.tiny.modal {
-    border-radius: 0px !important;
-}
-
-.ui.input {
-    border-radius: 0px !important;
-}
-
-.opening {
-      position: absolute !important;
-      padding-right: 28px !important;
-    }
-
-    .ui.secondary.menu {
-      margin-left: 0px !important;
-      margin-right: 0px !important;
-    }
-    .ui.container {
-      width: 100% !important;
-    }
-    .ui.form textarea:not([rows]){
-      height: -webkit-fill-available !important;
-      max-height: auto;
-    }
-
-    .ui.header {
-      margin-top: 0 !important;
-    }
-
-    .iframe_case {
-      /* padding: 1em; */
-      margin-left: 1em;
-      margin-right: 1em;
-      border: 1px !important;
-    }

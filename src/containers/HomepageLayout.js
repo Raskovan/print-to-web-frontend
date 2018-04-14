@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import HomepageHeading from '../components/HomepageHeading'
+import React from 'react'
+// import HomepageHeading from '../components/HomepageHeading'
 import { Link } from "react-router-dom";
 import {
 	Button,
@@ -8,16 +7,8 @@ import {
 	Divider,
 	Grid,
 	Header,
-	Icon,
 	Image,
-	List,
-	Menu,
-	Responsive,
 	Segment,
-	Sidebar,
-	Visibility,
-	Modal,
-	Form
 } from 'semantic-ui-react'
 
 

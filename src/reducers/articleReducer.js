@@ -27,6 +27,12 @@ export default (
 					}), action.payload]
 				}
 
+				// case 'DELETE_IMAGE':
+				// return {
+				// 	...state,
+				//
+				// }
+
 		default:
 			return state
 	}

@@ -14,7 +14,7 @@ class MagazineHomePage extends React.Component {
 	render() {
     let magazineName = this.props.magname
 		return (
-			<Container style={{marginTop: '70px'}}>
+			<Container style={{marginTop: '70px', marginBottom: '70px'}}>
 				<Card.Group itemsPerRow={2} stackable>
 					{this.props.articlesToShow
 						? this.props.articlesToShow.map(article => {

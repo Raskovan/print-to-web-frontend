@@ -4,21 +4,11 @@ import UploadForm from '../components/UploadForm'
 import UserMagForm from '../components/UserMagForm'
 import Article from '../components/Article'
 import {
-	Button,
 	Container,
 	Divider,
 	Grid,
 	Header,
-	Icon,
-	Image,
-	List,
-	Menu,
-	Responsive,
 	Segment,
-	Sidebar,
-	Visibility,
-	Modal,
-	Form,
 	Item
 } from 'semantic-ui-react'
 import { connect } from 'react-redux'
@@ -35,10 +25,10 @@ class DashboardContainer extends React.Component {
 	}
 
 	render() {
-		let iframe = document.getElementById('preview')
-		if (iframe) {
-			iframe.src = iframe.src
-		}
+	// 	let iframe = document.getElementById('preview')
+	// 	if (iframe) {
+	// 		iframe.src = iframe.src
+	// 	}
 
 // 		<Segment basic style={{padding: '0', height: '100%'}}>
 // 		<iframe
@@ -55,8 +45,7 @@ class DashboardContainer extends React.Component {
 
 		let url
 		this.props.currentUser ? url = this.props.currentUser.mag_url : null
-
-
+		console.log(process.env.REACT_APP_HOST)
 		return (
 			<div>
 				<Segment style={{ padding: '0em' }} vertical>
@@ -84,6 +73,27 @@ class DashboardContainer extends React.Component {
 										style={{ margin: '3em 0em', textTransform: 'uppercase' }}>
 										<a href="#">YOUR MAGAZINE'S PAGE</a>
 									</Divider>
+
+									<Grid.Row columns={2}>
+							      <Grid.Column>
+											<div className="thumbnail-container" title="Thumbnail Image of your homepage">
+												<div className="thumbnail">
+												 <iframe src={"http://localhost:3000/magazines/" + url} frameBorder="0" title="HomePage"></iframe>
+												</div>
+											</div>
+							      </Grid.Column>
+							      <Grid.Column>
+											<div className="thumbnail-container" title="Thumbnail Image of your homepage">
+												<div className="thumbnail">
+												 <iframe src="http://localhost:3000/magazines/great-redux-plus/Outer%20Space" frameBorder="0" title="ArticlePage"></iframe>
+												</div>
+											</div>
+							      </Grid.Column>
+							    </Grid.Row>
+
+
+
+
 
 							</Grid.Column>
 

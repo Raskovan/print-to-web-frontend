@@ -1,19 +1,12 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import HomepageHeading from '../components/HomepageHeading'
 import {
 	Button,
 	Container,
-	Divider,
-	Grid,
-	Header,
 	Icon,
-	Image,
-	List,
 	Menu,
 	Responsive,
 	Segment,
-	Sidebar,
 	Visibility,
 	Modal,
 	Form,
@@ -63,7 +56,7 @@ class NavBarSeman extends Component {
 	render() {
 		let user
 		this.props.currentUser ? (user = this.props.currentUser.username) : null
-    console.log('navbarsem', user)
+    // console.log('navbarsem', user)
     let minHeight
     user ? (minHeight = 50) : (minHeight = 650)
 
@@ -114,7 +107,7 @@ class NavBarSeman extends Component {
 
 						<Menu fixed={fixed ? 'top' : null} secondary={!fixed} size="large">
 							<Container>
-								<Menu.Item as="a" href="/" active>
+								<Menu.Item as="a" href="/" active style={{fontFamily: 'Abril Fatface'}}>
 									Print To Web
 								</Menu.Item>
 								<Menu.Item as="a" href="/magazines">Directory</Menu.Item>
@@ -133,13 +126,14 @@ class NavBarSeman extends Component {
 										<Button as="a" onClick={this.showLog('tiny')}>
 											Log in
 										</Button>
+
 										<Modal
 											size={sizeLog}
 											open={openLog}
 											onClose={this.closeLog}>
 											<Modal.Header>Log in</Modal.Header>
 											<Modal.Content>
-												<Form>
+												<Form onSubmit={this.onFormSubmit}>
 													<Form.Group widths="equal">
 														<Form.Input
 															name="username"
@@ -152,16 +146,17 @@ class NavBarSeman extends Component {
 															onChange={this.handleInput}
 														/>
 													</Form.Group>
+													<Form.Input
+														type='submit'
+														positive
+														icon="checkmark"
+														labelPosition="right"
+														content="Log In"
+														onClick={this.onFormSubmit}
+														/>
 												</Form>
 											</Modal.Content>
 											<Modal.Actions>
-												<Button
-													positive
-													icon="checkmark"
-													labelPosition="right"
-													content="Log In"
-													onClick={this.onFormSubmit}
-												/>
 											</Modal.Actions>
 										</Modal>
 

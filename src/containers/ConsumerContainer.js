@@ -11,7 +11,7 @@ import ConsumerFooter from '../components/ConsumerFooter'
 // import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
-import { Segment, Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 class ConsumerContainer extends React.Component {
 	// componentDidMount() {
@@ -20,7 +20,7 @@ class ConsumerContainer extends React.Component {
 	// }
 
 	render() {
-    console.log(this.props.articlesToShow);
+		console.log(this.props.articlesToShow)
 		return (
 			<div>
 				<NavBarMag />
@@ -28,22 +28,29 @@ class ConsumerContainer extends React.Component {
 					<Route exact path="/magazines/" component={MagazineDirectory} />
 
 					<Route
-						exact path="/magazines/:mag_name"
+						exact
+						path="/magazines/:mag_name"
 						render={renderProps => {
 							let magname = renderProps.match.params.mag_name
-							return <MagazineHomePage magname={magname}/>
+							return <MagazineHomePage magname={magname} />
 						}}
 					/>
-          <Route
-            exact path="/magazines/:mag_name/:article_name"
-            render={renderProps => {
-              let magname = renderProps.match.params.mag_name
-              let articleName = renderProps.match.params.article_name
-              return <MagazineArticlePage magname={magname} articleName={articleName}/>
-            }}
-          />
-			</Container>
-			<ConsumerFooter />
+					<Route
+						exact
+						path="/magazines/:mag_name/:article_name"
+						render={renderProps => {
+							let magname = renderProps.match.params.mag_name
+							let articleName = renderProps.match.params.article_name
+							return (
+								<MagazineArticlePage
+									magname={magname}
+									articleName={articleName}
+								/>
+							)
+						}}
+					/>
+				</Container>
+				<ConsumerFooter />
 			</div>
 		)
 	}
@@ -56,6 +63,4 @@ const mapStateToProps = state => {
 	}
 }
 
-export default withRouter(
-	connect(mapStateToProps, null )(ConsumerContainer)
-)
+export default withRouter(connect(mapStateToProps, null)(ConsumerContainer))
