@@ -13,25 +13,37 @@ class ArticleContainer extends React.Component {
 		author: '',
 		subtitle: '',
 		quote: '',
-		images: []
+		images: [],
 	}
+
+	onChange = (editorState) => this.setState({editorState})
 
 	componentDidMount() {
 		if (!this.props.currentUser) {
 			this.props.history.push('/')
-		}
-
-		this.props.article
-			? this.setState({
+		} else if (this.props.article) {
+			this.setState({
 					article: this.props.article,
 					title: this.props.article.title,
 					body: this.props.article.body,
 					author: this.props.article.author,
 					subtitle: this.props.article.subtitle,
 					quote: this.props.article.quote,
-					images: this.props.article.images
+					images: this.props.article.images,
 			  })
-			: null
+		}
+
+		// this.props.article
+		// 	? this.setState({
+		// 			article: this.props.article,
+		// 			title: this.props.article.title,
+		// 			body: this.props.article.body,
+		// 			author: this.props.article.author,
+		// 			subtitle: this.props.article.subtitle,
+		// 			quote: this.props.article.quote,
+		// 			images: this.props.article.images,
+		// 	  })
+		// 	: null
 	}
 
 	uploadImage = response => {
@@ -90,8 +102,6 @@ class ArticleContainer extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.images)
-
 		return this.props.article ? (
 			<Container style={{ marginBottom: '30px', marginTop: '30px' }}>
 				<Grid>

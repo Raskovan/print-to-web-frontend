@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 import { Form, Segment, Button, List, Input } from 'semantic-ui-react'
 import { updateUserInfo } from '../actions/UserActions'
 
+
 class UserMagForm extends React.Component {
 	state = {
 		mag_title: '',
 		mag_url: '',
 		mag_description: '',
-		editClicked: true
+		editClicked: true,
 	}
+
 
 	editClickedForm = () => {
 		this.setState({
@@ -31,7 +33,7 @@ class UserMagForm extends React.Component {
 		// console.log(this.state.editClicked)
 		const magObject = {
 			mag_title: this.state.mag_title,
-			mag_url: this.state.mag_title.toLowerCase().replace(/ /gi, "-"),
+			mag_url: this.state.mag_title.toLowerCase().replace(/ /gi, '-'),
 			mag_description: this.state.mag_description
 		}
 		this.props.updateUserInfo(this.props.currentUser.id, magObject).then(
@@ -87,7 +89,9 @@ class UserMagForm extends React.Component {
 								onChange={this.handleInput}
 							/>
 						</Form.Field>
+
 						<Form.TextArea
+							style={{ whiteSpace: 'pre-line' }}
 							label="Magazine Description"
 							placeholder="Tell us more about your magazine..."
 							name="mag_description"

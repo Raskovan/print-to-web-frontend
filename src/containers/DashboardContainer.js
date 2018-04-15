@@ -25,6 +25,10 @@ class DashboardContainer extends React.Component {
 	}
 
 	render() {
+		// if (this.props.articles !==[]) {
+		// 	debugger
+		// }
+
 	// 	let iframe = document.getElementById('preview')
 	// 	if (iframe) {
 	// 		iframe.src = iframe.src
@@ -42,10 +46,11 @@ class DashboardContainer extends React.Component {
 // </Segment>
 
 
-
+		let sortedArticles
 		let url
 		this.props.currentUser ? url = this.props.currentUser.mag_url : null
-		console.log(process.env.REACT_APP_HOST)
+		// console.log(process.env.REACT_APP_HOST)
+
 		return (
 			<div>
 				<Segment style={{ padding: '0em' }} vertical>
@@ -85,7 +90,7 @@ class DashboardContainer extends React.Component {
 							      <Grid.Column>
 											<div className="thumbnail-container" title="Thumbnail Image of your homepage">
 												<div className="thumbnail">
-												 <iframe src="http://localhost:3000/magazines/great-redux-plus/Outer%20Space" frameBorder="0" title="ArticlePage"></iframe>
+												 <iframe src={"http://localhost:3000/magazines/" + url} frameBorder="0" title="ArticlePage"></iframe>
 												</div>
 											</div>
 							      </Grid.Column>
@@ -104,7 +109,7 @@ class DashboardContainer extends React.Component {
 								</Header>
 								<Item.Group divided>
 									{this.props.articles
-										? this.props.articles.map(article => {
+										? this.props.articles.sort((a, b) => {return a.position - b.position}).map(article => {
 												return <Article key={article.id} article={article} />
 										  })
 										: null}

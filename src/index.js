@@ -7,6 +7,8 @@ import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers/index'
 import { BrowserRouter as Router } from 'react-router-dom'
+import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+
 
 const store = createStore(reducer, applyMiddleware(thunk))
 

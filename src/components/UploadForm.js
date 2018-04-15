@@ -2,20 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Segment, Button } from 'semantic-ui-react'
 import { fetchArticles } from '../actions/UserActions'
-// import * as filestack from 'filestack-js'
-// import { client } from 'filestack-react';
 import ReactFilestack from 'filestack-react'
-// const filestack = client.init('AIjLfIWPiT8qZQH8KeLEfz');
 
 class UploadForm extends React.Component {
 	state = {
 		article: '',
 		article_uploaded: false
 	}
-
-	// onSuccess = result => {
-	// 	console.log(result);
-	// }
 
 	handleUpload = event => {
 		let formData
@@ -27,9 +20,6 @@ class UploadForm extends React.Component {
 			body: formData
 		})
 			.then(res => res.json())
-			// .then(console.log)
-			// .then(this.uploadImage)
-			// .then(response => this.props.fetchArticles())
 			.then(article =>
 				this.setState({
 					article: article,
@@ -38,17 +28,7 @@ class UploadForm extends React.Component {
 			)
 	}
 
-	// 	handleAddFile = event => {
-	// 		this.setState({
-	// 			articleFile: event.target.files[0]
-	// 		}, () => this.handleUpload(this.state.articleFile))
-	// 		// console.log(event.target.files)
-	// 		// console.log(this.state.articleFile)
-	// 		// this.handleUpload(this.state.articleFile)
-	// }
-
 	uploadImage = response => {
-		// console.log(response)
 		fetch('http://localhost:4000/images', {
 			method: 'POST',
 			headers: {

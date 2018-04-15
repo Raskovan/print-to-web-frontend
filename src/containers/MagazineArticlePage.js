@@ -18,11 +18,13 @@ class ArticlePage extends React.Component {
 			.then(response =>
 				this.setState({
 					article: response
-				})
-			)
+				}))
+
 	}
+
 	render() {
-		console.log(this.state.article)
+		// console.log(this.state.article.body)
+		// debugger
 		return (
 			<Container>
 				{'id' in this.state.article ? (
@@ -44,7 +46,7 @@ class ArticlePage extends React.Component {
 								</Header>
 								<Header.Subheader>{this.state.article.author}</Header.Subheader>
 								<Divider />
-								<Container text style={{ marginBottom: '50px' }}>
+								<Container text style={{ marginBottom: '50px', whiteSpace: 'pre-line' }}>
 									<p
 										style={{
 											fontSize: '1.8rem',
