@@ -20,7 +20,7 @@ class Article extends React.Component {
 
 	render() {
 		return (
-			<Item>
+			<div>
 				{this.props.article.images[0] ?
 				<Item.Image size="small" src={this.props.article.images[0].url} /> : null }
 				<Item.Content>
@@ -45,7 +45,7 @@ class Article extends React.Component {
 						</Button>
 					</Item.Extra>
 				</Item.Content>
-			</Item>
+			</div>
 		)
 	}
 }
