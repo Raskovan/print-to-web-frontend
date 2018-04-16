@@ -12,7 +12,7 @@ class MagazineHomePage extends React.Component {
   }
 
 	render() {
-    console.log(this.props.user.mag_title);
+    // console.log(this.props.user.mag_title);
     let magazineName = this.props.magname
 		return (
 			<Container style={{marginTop: '3.5rem', marginBottom: '70px'}}>

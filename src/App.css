@@ -32,7 +32,7 @@ body {
 
 .thumbnail iframe {
   width: 1440px;
-  height: 900px;
+  height: 1100px;
 
 }
 
@@ -59,10 +59,12 @@ body {
 
 .thumbnail-container {
   width: calc(1440px * 0.25);
-  height: calc(900px * 0.25);
-  display: inline-block;
+  height: calc(1100px * 0.25);
+  display: block;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
+  border: 5px solid black;
 }
 
 /* .thumbnail iframe {

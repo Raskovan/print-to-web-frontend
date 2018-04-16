@@ -15,7 +15,7 @@ class UploadForm extends React.Component {
 		formData = new FormData()
 		formData.append('file', event.target.files[0])
 		formData.append('user_id', this.props.currentUser.id)
-		fetch('http://localhost:4000/articles', {
+		fetch(process.env.REACT_APP_HOST+'/articles', {
 			method: 'POST',
 			body: formData
 		})
@@ -29,7 +29,7 @@ class UploadForm extends React.Component {
 	}
 
 	uploadImage = response => {
-		fetch('http://localhost:4000/images', {
+		fetch(process.env.REACT_APP_HOST+'/images', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ class UploadForm extends React.Component {
 	// let uploaded = filestack.upload(file)
 
 	render() {
-		console.log(this.state.article)
+		console.log(this.state)
 		return (
 			<div>
 				<p style={{ fontSize: '1.2em', textAlign: 'center' }}>
@@ -77,9 +77,9 @@ class UploadForm extends React.Component {
 						onChange={this.handleUpload}
 					/>
 				</Segment>
-				{this.state.article_uploaded ? (
+				{this.state.article_uploaded && this.state.article ? (
 					<Segment basic style={{ padding: '0' }}>
-						<p style={{ fontSize: '1.2em', textAlign: 'center' }}>
+						<p style={{ fontSize: '1.2em', textAlign: 'center', color: 'red' }}>
 							<b>Step 2.</b> Now, upload your image file:{' '}
 							{
 								this.state.article.img_name.split('/')[

@@ -30,10 +30,9 @@ class UserMagForm extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		// console.log(this.state.editClicked)
 		const magObject = {
 			mag_title: this.state.mag_title,
-			mag_url: this.state.mag_title.toLowerCase().replace(/ /gi, '-'),
+			mag_url: this.state.mag_url,
 			mag_description: this.state.mag_description
 		}
 		this.props.updateUserInfo(this.props.currentUser.id, magObject).then(
@@ -47,13 +46,15 @@ class UserMagForm extends React.Component {
 	}
 
 	handleInput = event => {
-		// console.log(event.target.name);
 		this.setState({
 			[event.target.name]: event.target.value
-			// mag_title: event.target.value,
-			// mag_url: event.target.value.toLowerCase().replace(/ /gi, "-"),
-			// mag_description: event.target.value
-			// mag_description: event.target.value
+		})
+	}
+
+	handleInputTitle = event => {
+		this.setState({
+			mag_title: event.target.value,
+			mag_url: event.target.value.toLowerCase().replace(/ /gi, '-'),
 		})
 	}
 
@@ -69,12 +70,11 @@ class UserMagForm extends React.Component {
 							placeholder="My Magazine"
 							name="mag_title"
 							value={this.state.mag_title}
-							onChange={this.handleInput}
+							onChange={this.handleInputTitle}
 						/>
 						<Form.Input
 							fluid
 							label="Magazine URL"
-							placeholder="localhost:3000/magazines"
 							name="mag_url"
 							value={this.state.mag_url}
 							onChange={this.handleInput}
@@ -82,7 +82,7 @@ class UserMagForm extends React.Component {
 						/>
 						<Form.Field>
 							<Input
-								label="localhost:3000/magazines/"
+								label={process.env.REACT_APP_URL}
 								placeholder="my-magazine"
 								name="mag_url"
 								value={this.state.mag_url}
@@ -114,7 +114,7 @@ class UserMagForm extends React.Component {
 						<List.Item style={{ lineHeight: '2rem' }}>
 							<List.Header>Magazine URL</List.Header>
 							<a href={'/magazines/' + this.props.currentUser.mag_url}>
-								localhost:3000/magazines/{this.props.currentUser.mag_url}
+								{process.env.REACT_APP_URL}{this.props.currentUser.mag_url}
 							</a>
 						</List.Item>
 						<List.Item style={{ lineHeight: '2rem' }}>

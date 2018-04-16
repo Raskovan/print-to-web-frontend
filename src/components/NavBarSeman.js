@@ -29,12 +29,12 @@ class NavBarSeman extends Component {
 		})
 	}
 
-  onFormSubmit = event => {
-    event.preventDefault()
-    this.props.fetchLogin(this.state.username, this.state.password).then(() => {
-      this.props.history.push('/dashboard')
-    })
-  }
+	onFormSubmit = event => {
+		event.preventDefault()
+		this.props.fetchLogin(this.state.username, this.state.password).then(() => {
+			this.props.history.push('/dashboard')
+		})
+	}
 
 	onFormSignup = event => {
 		event.preventDefault()
@@ -56,10 +56,9 @@ class NavBarSeman extends Component {
 	render() {
 		let user
 		this.props.currentUser ? (user = this.props.currentUser.username) : null
-    // console.log('navbarsem', user)
-    let minHeight
-    user ? (minHeight = 50) : (minHeight = 650)
-
+		// console.log('navbarsem', user)
+		let minHeight
+		user ? (minHeight = 50) : (minHeight = 650)
 
 		const trigger = (
 			<span>
@@ -82,10 +81,8 @@ class NavBarSeman extends Component {
 		const { open, size, openLog, sizeLog } = this.state
 		const { children } = this.props
 		const { fixed } = this.state
-    // const segmentHeight
-    // user ? segmentHeight = 50 : segmentHeight = 650
-
-
+		// const segmentHeight
+		// user ? segmentHeight = 50 : segmentHeight = 650
 
 		return (
 			<Responsive>
@@ -104,13 +101,18 @@ class NavBarSeman extends Component {
 							backgroundSize: 'cover'
 						}}
 						vertical>
-
 						<Menu fixed={fixed ? 'top' : null} secondary={!fixed} size="large">
 							<Container>
-								<Menu.Item as="a" href="/" active style={{fontFamily: 'Abril Fatface'}}>
+								<Menu.Item
+									as="a"
+									href="/"
+									active
+									style={{ fontFamily: 'Abril Fatface' }}>
 									Print To Web
 								</Menu.Item>
-								<Menu.Item as="a" href="/magazines">Directory</Menu.Item>
+								<Menu.Item as="a" href="/magazines">
+									Directory
+								</Menu.Item>
 
 								{this.props.currentUser ? (
 									<Menu.Item position="right">
@@ -146,18 +148,16 @@ class NavBarSeman extends Component {
 															onChange={this.handleInput}
 														/>
 													</Form.Group>
-													<Form.Input
-														type='submit'
+													<Button
+														fluid
+														type="submit"
 														positive
 														icon="checkmark"
-														labelPosition="right"
 														content="Log In"
 														onClick={this.onFormSubmit}
-														/>
+													/>
 												</Form>
 											</Modal.Content>
-											<Modal.Actions>
-											</Modal.Actions>
 										</Modal>
 
 										<Button
@@ -183,25 +183,23 @@ class NavBarSeman extends Component {
 															onChange={this.handleInput}
 														/>
 													</Form.Group>
+													<Button
+														positive
+														icon="checkmark"
+														fluid
+														content="Sign Up"
+														onClick={this.onFormSignup}
+													/>
 												</Form>
 											</Modal.Content>
-											<Modal.Actions>
-												<Button
-													positive
-													icon="checkmark"
-													labelPosition="right"
-													content="Sign Up"
-													onClick={this.onFormSignup}
-												/>
-											</Modal.Actions>
 										</Modal>
 									</Menu.Item>
 								)}
 							</Container>
 						</Menu>
-            {!this.props.currentUser ? <HomepageHeading  {...this.props} /> : null}
-
-
+						{!this.props.currentUser ? (
+							<HomepageHeading {...this.props} />
+						) : null}
 					</Segment>
 				</Visibility>
 			</Responsive>
@@ -215,4 +213,6 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, { logout, fetchLogin, fetchSignup })(NavBarSeman)
+export default connect(mapStateToProps, { logout, fetchLogin, fetchSignup })(
+	NavBarSeman
+)

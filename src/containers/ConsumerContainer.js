@@ -1,23 +1,14 @@
 import React from 'react'
-// import HomeContainer from './HomeContainer'
-// import DashboardContainer from './DashboardContainer'
 import MagazineDirectory from './MagazineDirectory'
 import MagazineArticlePage from './MagazineArticlePage'
-// import ArticleContainer from './ArticleContainer'
 import MagazineHomePage from './MagazineHomePage'
 import NavBarMag from '../components/NavBarMag'
 import ConsumerFooter from '../components/ConsumerFooter'
-
-// import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 
 class ConsumerContainer extends React.Component {
-	// componentDidMount() {
-	// console.log(this.props.history);
-	// 	}
-	// }
 
 	render() {
 		console.log(this.props.articlesToShow)
@@ -55,7 +46,6 @@ class ConsumerContainer extends React.Component {
 		)
 	}
 }
-// {!this.props.loggedIn ? <HomeContainer /> : <DashboardContainer />}
 
 const mapStateToProps = state => {
 	return {

@@ -32,18 +32,6 @@ class ArticleContainer extends React.Component {
 					images: this.props.article.images,
 			  })
 		}
-
-		// this.props.article
-		// 	? this.setState({
-		// 			article: this.props.article,
-		// 			title: this.props.article.title,
-		// 			body: this.props.article.body,
-		// 			author: this.props.article.author,
-		// 			subtitle: this.props.article.subtitle,
-		// 			quote: this.props.article.quote,
-		// 			images: this.props.article.images,
-		// 	  })
-		// 	: null
 	}
 
 	uploadImage = response => {
@@ -54,13 +42,11 @@ class ArticleContainer extends React.Component {
 		filestack.remove(this.props.article.images[0].handle)
 		// console.log(this.props.article.images)
 		let img_id = this.props.article.images[0].id
-		fetch(`http://localhost:4000/images/${img_id}`, {
+		fetch(process.env.REACT_APP_HOST+`/images/${img_id}`, {
 			method: 'DELETE'
 		})
-		// .then(res => res.json())
-		// .then(image => this.setState({images: []}))
 
-		fetch('http://localhost:4000/images', {
+		fetch(process.env.REACT_APP_HOST+'/images', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

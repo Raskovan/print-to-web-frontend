@@ -9,10 +9,8 @@ class ArticlePage extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch(
-			`http://localhost:4000/articles/${this.props.magname}/${
-				this.props.articleName
-			}`
+		fetch(process.env.REACT_APP_HOST+`/articles/${this.props.magname}/${
+				this.props.articleName}`
 		)
 			.then(response => response.json())
 			.then(response =>

@@ -12,7 +12,7 @@ class ConsumerFooter extends React.Component {
         fluid
         widths={3}
         size="tiny">
-        <Menu.Item name="Powered by Ptint To Web" />
+        <Menu.Item name="Powered by Print To Web" />
       </Menu>
 		)
 	}
