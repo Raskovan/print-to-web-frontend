@@ -108,11 +108,13 @@ class DashboardContainer extends React.Component {
 									<Divider/>
 								</Header>
 								<Item.Group divided>
+
 									{this.props.articles
 										? this.props.articles.sort((a, b) => {return a.position - b.position}).map(article => {
 												return <Article key={article.id} article={article} />
 										  })
 										: null}
+										
 								</Item.Group>
 							</Grid.Column>
 						</Grid.Row>
