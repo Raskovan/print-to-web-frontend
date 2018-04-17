@@ -6,11 +6,11 @@ function headers() {
 	}
 }
 
-const baseUrl = `http://localhost:4000`
+const baseUrl = process.env.REACT_APP_HOST
 
 export class RestfulAdapter {
 	static login(username, password, route) {
-		return fetch(`${baseUrl}/${route}`, {
+		return fetch(`${baseUrl}${route}`, {
 			method: 'POST',
 			headers: headers(),
 			body: JSON.stringify({
@@ -21,7 +21,7 @@ export class RestfulAdapter {
 	}
 
 	static signup(username, password, route) {
-		return fetch(`${baseUrl}/${route}`, {
+		return fetch(`${baseUrl}${route}`, {
 			method: 'POST',
 			headers: headers(),
 			body: JSON.stringify({
@@ -32,7 +32,7 @@ export class RestfulAdapter {
 	}
 
   static getUser(token, route) {
-    return fetch(`${baseUrl}/${route}`, {
+    return fetch(`${baseUrl}${route}`, {
       headers: {
         "Authorization": 'Bearer ' + token
       }
@@ -41,7 +41,7 @@ export class RestfulAdapter {
 
 	static fetchAllUsers(url, route) {
 		let reqObj = {mag_url: url}
-    return fetch(`${baseUrl}/${route}`, {
+    return fetch(`${baseUrl}${route}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export class RestfulAdapter {
 
 	static getUsers(route) {
 		console.log('FETCH');
-		return fetch(`${baseUrl}/${route}`)
+		return fetch(`${baseUrl}${route}`)
 		.then(r => r.json())
 	}
 

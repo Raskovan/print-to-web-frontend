@@ -2,7 +2,7 @@
 export const fetchArticles = () => {
 	return dispatch => {
 		const token = localStorage.getItem('token')
-		return fetch(process.env.REACT_APP_HOST+'/articles/', {
+		return fetch(process.env.REACT_APP_HOST+'articles/', {
 			headers: {
 				Authorization: 'Bearer ' + token
 			}
@@ -14,7 +14,7 @@ export const fetchArticles = () => {
 
 export const updateUserInfo = (id, mag_info) => {
 	return dispatch => {
-		return fetch(process.env.REACT_APP_HOST+`/users/${id}`, {
+		return fetch(process.env.REACT_APP_HOST+`users/${id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
@@ -27,19 +27,9 @@ export const updateUserInfo = (id, mag_info) => {
 	}
 }
 
-// export const deleteImage = (id) => {
-// 	return dispatch => {
-// 		return fetch(`http://localhost:4000/images/${id}`, {
-// 			method: 'DELETE'
-// 		})
-// 			.then(response => response.json())
-// 			.then(response => dispatch({ type: 'DELETE_IMAGE', payload: response }))
-// 	}
-// }
-
 export const deleteArticle = (id, handle) => {
 	return dispatch => {
-		return fetch(process.env.REACT_APP_HOST+`/articles/${id}`, {
+		return fetch(process.env.REACT_APP_HOST+`articles/${id}`, {
 			method: 'DELETE'
 		})
 			.then(response => response.json())
@@ -49,7 +39,7 @@ export const deleteArticle = (id, handle) => {
 
 export const updateArticle = (article, id) => {
 	return dispatch => {
-		return fetch(process.env.REACT_APP_HOST+`/articles/${id}`, {
+		return fetch(process.env.REACT_APP_HOST+`articles/${id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',

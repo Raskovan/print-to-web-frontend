@@ -55,13 +55,13 @@ class HomepageLayout extends React.Component {
 									 Easy Web Publishing
 								 </Header>
 								 <p style={{ fontSize: '1.33em' }}>
-									 If you are tired of copying and pasting your articles from InDesign to Wordpress or you want to publish your content online with no extra hassle -  Print-To-Web is here to help.
+									 If you are tired of copying and pasting your articles from InDesign to Wordpress or if you would like to publish your content online with no extra hassle, Print-To-Web is here to help.
 								 </p>
 								 <Header as="h3" style={{ fontSize: '2em' }}>
 									 Create Your Own Online Magazine
 								 </Header>
 								 <p style={{ fontSize: '1.33em' }}>
-									 With a couple easy steps we will help your magazine to reach out to millions of people worldwide.
+									 With a few easy steps we will help your publication to reach out to millions of people worldwide.
 								 </p>
 							 </Grid.Column>
 							 <Grid.Column floated="right" width={6}>
@@ -105,7 +105,7 @@ class HomepageLayout extends React.Component {
 					 <Segment style={{ padding: '8em 0em' }} vertical>
 						 <Container text>
 							 <Header as="h3" style={{ fontSize: '2em' }}>
-								 We make it Easy
+								 We Make It Easy
 							 </Header>
 							 <p style={{ fontSize: '1.33em' }}>
 								 Add tags to your styles while laying out articles and export the file as XML from InDesign. Upload this file and all linked images to our servers. Thats how you create your online presence. Easy!
@@ -119,11 +119,10 @@ class HomepageLayout extends React.Component {
 								 <a href="#">Case Study</a>
 							 </Divider>
 							 <Header as="h3" style={{ fontSize: '2em' }}>
-								 Troubles FInally Ended For Us
+								 Troubles Finally Ended For Us
 							 </Header>
 							 <p style={{ fontSize: '1.33em' }}>
-								 For years our editorial team was strugguling with putting our magazines online. We had to manage our Wordpress site and tried to keep it safe from hackers. We had to pay to developers for each update. It was such a headache.
-								 With Print-To-Web we don't need to think about all of that anymore and can concentrate on delivering the best content to our readers.
+								 "For years our editorial team has been struggling with putting our magazines online. We had to manage our Wordpress site and tried to keep it safe from hackers. We had to pay developers for each update. It was such a headache. With Print-To-Web we don't need to worry about this anymore and can concentrate on delivering the best content to our readers." <br/>- Editor-in-Chief, Ami Magazine
 							 </p>
 
 							 <Button as="a" size="large" onClick={this.show('tiny')}>
@@ -138,6 +137,7 @@ class HomepageLayout extends React.Component {
 			 									name="username"
 			 									placeholder="Username"
 			 									onChange={this.handleInput}
+												autoFocus
 			 								/>
 			 								<Form.Input
 			 									name="password"

@@ -141,6 +141,7 @@ class NavBarSeman extends Component {
 															name="username"
 															placeholder="Username"
 															onChange={this.handleInput}
+															autoFocus
 														/>
 														<Form.Input
 															name="password"
@@ -176,6 +177,7 @@ class NavBarSeman extends Component {
 															name="username"
 															placeholder="Username"
 															onChange={this.handleInput}
+															autoFocus
 														/>
 														<Form.Input
 															name="password"

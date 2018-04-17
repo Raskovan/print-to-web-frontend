@@ -15,10 +15,17 @@ class UploadForm extends React.Component {
 		formData = new FormData()
 		formData.append('file', event.target.files[0])
 		formData.append('user_id', this.props.currentUser.id)
-		fetch(process.env.REACT_APP_HOST+'/articles', {
+		fetch(process.env.REACT_APP_HOST+'articles', {
 			method: 'POST',
 			body: formData
 		})
+// 		.then(response => {
+//     console.log(response);
+// }).catch(e => {
+//     console.log(e);
+// });
+
+
 			.then(res => res.json())
 			.then(article =>
 				this.setState({
@@ -29,7 +36,7 @@ class UploadForm extends React.Component {
 	}
 
 	uploadImage = response => {
-		fetch(process.env.REACT_APP_HOST+'/images', {
+		fetch(process.env.REACT_APP_HOST+'images', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

@@ -54,7 +54,7 @@ class UserMagForm extends React.Component {
 	handleInputTitle = event => {
 		this.setState({
 			mag_title: event.target.value,
-			mag_url: event.target.value.toLowerCase().replace(/ /gi, '-'),
+			mag_url: event.target.value.toLowerCase().replace(/ /gi, '-').replace(/'/,'')
 		})
 	}
 
@@ -71,6 +71,7 @@ class UserMagForm extends React.Component {
 							name="mag_title"
 							value={this.state.mag_title}
 							onChange={this.handleInputTitle}
+							autoFocus
 						/>
 						<Form.Input
 							fluid

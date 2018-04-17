@@ -8,6 +8,7 @@ export default (
 ) => {
 	switch (action.type) {
 		case 'FIND_MAGAZINE':
+		console.log(action.payload)
 			return {
 				...state,
 			userPayload: action.payload,

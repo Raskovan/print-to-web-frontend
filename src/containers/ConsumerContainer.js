@@ -11,7 +11,7 @@ import { Container } from 'semantic-ui-react'
 class ConsumerContainer extends React.Component {
 
 	render() {
-		console.log(this.props.articlesToShow)
+		// console.log(this.props.articlesToShow)
 		return (
 			<div>
 				<NavBarMag />

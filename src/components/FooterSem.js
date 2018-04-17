@@ -23,6 +23,12 @@ class FooterSem extends React.Component {
 											<a href="https://medium.com/@alexey.katalkin/">Medium</a>
 										</List.Content>
 									</List.Item>
+									<List.Item>
+										<List.Icon name="linkedin square" size='large' />
+										<List.Content>
+											<a href="https://www.linkedin.com/in/alexey-katalkin-945590161/">LinkedIn</a>
+										</List.Content>
+									</List.Item>
 								</List>
 							</Grid.Column>
 							<Grid.Column width={3}>
