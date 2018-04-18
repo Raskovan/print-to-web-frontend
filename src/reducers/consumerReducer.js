@@ -8,7 +8,6 @@ export default (
 ) => {
 	switch (action.type) {
 		case 'FIND_MAGAZINE':
-		console.log(action.payload)
 			return {
 				...state,
 			userPayload: action.payload,
@@ -16,7 +15,6 @@ export default (
 			}
 
       case 'ALL_USERS':
-      console.log(action.payload.users)
         return {
           ...state,
         users: action.payload.users,

@@ -79,7 +79,6 @@ class NavBarSeman extends Component {
 			}
 		]
 		const { open, size, openLog, sizeLog } = this.state
-		const { children } = this.props
 		const { fixed } = this.state
 		// const segmentHeight
 		// user ? segmentHeight = 50 : segmentHeight = 650

@@ -36,7 +36,7 @@ class HomepageHeading extends Component {
 	show = size => () => this.setState({ size, open: true })
 	close = () => this.setState({ open: false })
 	render() {
-		const { open, size, openLog, sizeLog } = this.state
+		const { open, size } = this.state
 		return (
 			<Container text>
 				<Header

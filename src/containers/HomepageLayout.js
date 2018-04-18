@@ -42,7 +42,7 @@ class HomepageLayout extends React.Component {
 	 close = () => this.setState({ open: false })
 
 	 render(){
-		 const { open, size, openLog, sizeLog } = this.state
+		 const { open, size } = this.state
 
 		 return(
 
@@ -115,8 +115,8 @@ class HomepageLayout extends React.Component {
 								 as="h4"
 								 className="header"
 								 horizontal
-								 style={{ margin: '3em 0em', textTransform: 'uppercase' }}>
-								 <a href="#">Case Study</a>
+								 style={{ margin: '3em 0em', textTransform: 'uppercase', color: '#4183c4' }}>
+								 <p>Case Study</p>
 							 </Divider>
 							 <Header as="h3" style={{ fontSize: '2em' }}>
 								 Troubles Finally Ended For Us

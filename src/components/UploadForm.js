@@ -15,16 +15,15 @@ class UploadForm extends React.Component {
 		formData = new FormData()
 		formData.append('file', event.target.files[0])
 		formData.append('user_id', this.props.currentUser.id)
-		fetch(process.env.REACT_APP_HOST+'articles', {
+		fetch(process.env.REACT_APP_HOST + 'articles', {
 			method: 'POST',
 			body: formData
 		})
-// 		.then(response => {
-//     console.log(response);
-// }).catch(e => {
-//     console.log(e);
-// });
-
+			// 		.then(response => {
+			//     console.log(response);
+			// }).catch(e => {
+			//     console.log(e);
+			// });
 
 			.then(res => res.json())
 			.then(article =>
@@ -36,7 +35,8 @@ class UploadForm extends React.Component {
 	}
 
 	uploadImage = response => {
-		fetch(process.env.REACT_APP_HOST+'images', {
+		console.log(response);
+		fetch(process.env.REACT_APP_HOST + 'images', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -44,8 +44,8 @@ class UploadForm extends React.Component {
 			},
 			body: JSON.stringify({
 				article_id: this.state.article.id,
-				url: response.filesUploaded[0].url,
-				handle: response.filesUploaded[0].handle
+				url: response !== 'placeholder' ? response.filesUploaded[0].url : 'http://thechurchontheway.org/wp-content/uploads/2016/05/placeholder1.png',
+				handle: response !== 'placeholder' ? response.filesUploaded[0].handle : 'placeholder'
 			})
 		})
 			.then(r => r.json())
@@ -58,7 +58,6 @@ class UploadForm extends React.Component {
 	// let uploaded = filestack.upload(file)
 
 	render() {
-		console.log(this.state)
 		return (
 			<div>
 				<p style={{ fontSize: '1.2em', textAlign: 'center' }}>
@@ -94,22 +93,28 @@ class UploadForm extends React.Component {
 								]
 							}
 						</p>
-						<ReactFilestack
-							options={{ accept: 'image/*', fromSources: 'local_file_system' }}
-							apikey={process.env.REACT_APP_FILESTACK_API}
-							security={{
-								policy: process.env.REACT_APP_FILESTACK_POLICY,
-								signature: process.env.REACT_APP_FILESTACK_SIGNATURE
-							}}
-							buttonText="Upload Your Image"
-							buttonClass="classname"
-							onSuccess={this.uploadImage}
-							render={({ onPick }) => (
-								<Button primary fluid onClick={onPick}>
-									Upload Your Image
-								</Button>
-							)}
-						/>
+						<Button.Group widths="2">
+							<ReactFilestack
+								options={{
+									accept: 'image/*',
+									fromSources: 'local_file_system'
+								}}
+								apikey={process.env.REACT_APP_FILESTACK_API}
+								security={{
+									policy: process.env.REACT_APP_FILESTACK_POLICY,
+									signature: process.env.REACT_APP_FILESTACK_SIGNATURE
+								}}
+								buttonText="Upload Your Image"
+								buttonClass="classname"
+								onSuccess={this.uploadImage}
+								render={({ onPick }) => (
+									<Button color='red' onClick={onPick}>
+										Upload Your Image
+									</Button>
+								)}
+							/>
+						<Button onClick={() => this.uploadImage('placeholder')}>Upload Later</Button>
+						</Button.Group>
 					</Segment>
 				) : null}
 			</div>

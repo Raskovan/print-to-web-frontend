@@ -71,6 +71,19 @@ i.large.icon, i.large.icons {
   line-height: 0.8;
 }
 
+.RichTextEditor__root___2QXK-{
+    font-family: 'EB Garamond', serif;
+}
+
+.RichTextEditor__editor___1QqIU{
+  font-size: 18px;
+}
+
+mark {
+    background-color: #d9d9d9;
+    color: black;
+}
+
 /* .thumbnail iframe {
   opacity: 0;
   transition: all 300ms ease-in-out;

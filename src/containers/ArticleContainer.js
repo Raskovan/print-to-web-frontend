@@ -1,52 +1,89 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types'
 import { Image, Grid, Form, Button, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { updateArticle, fetchArticles } from '../actions/UserActions'
 import ReactFilestack from 'filestack-react'
 import { client } from 'filestack-react'
+import RichTextEditor from 'react-rte'
+
+const toolbarConfig = {
+    // Optionally specify the groups to display (displayed in the order listed).
+    display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_BUTTONS', 'LINK_BUTTONS', 'HISTORY_BUTTONS'],
+    INLINE_STYLE_BUTTONS: [
+      {label: 'Bold', style: 'BOLD', className: 'custom-css-class'},
+      {label: 'Italic', style: 'ITALIC'},
+      {label: 'Underline', style: 'UNDERLINE'}
+    ],
+    BLOCK_TYPE_BUTTONS: [
+      {label: 'UL', style: 'unordered-list-item'},
+      {label: 'OL', style: 'ordered-list-item'}
+    ]
+  };
 
 class ArticleContainer extends React.Component {
+	constructor(props){
+		super(props)
+		this.uploadImage = this.uploadImage.bind(this)
+	}
+
+	static propTypes = {
+		onChange: PropTypes.func
+	}
+
 	state = {
 		article: [],
 		title: '',
-		body: '',
+		// body: '',
 		author: '',
 		subtitle: '',
 		quote: '',
 		images: [],
+		body: RichTextEditor.createEmptyValue()
 	}
 
-	onChange = (editorState) => this.setState({editorState})
+	onChange = body => {
+		this.setState({ body })
+		// if (this.props.onChange) {
+		// 	// Send the changes up to the parent component as an HTML string.
+		// 	// This is here to demonstrate using `.toString()` but in a real app it
+		// 	// would be better to avoid generating a string on each change.
+		// 	this.props.onChange(body.toString('html'))
+		// }
+	}
 
 	componentDidMount() {
 		if (!this.props.currentUser) {
 			this.props.history.push('/')
 		} else if (this.props.article) {
 			this.setState({
-					article: this.props.article,
-					title: this.props.article.title,
-					body: this.props.article.body,
-					author: this.props.article.author,
-					subtitle: this.props.article.subtitle,
-					quote: this.props.article.quote,
-					images: this.props.article.images,
-			  })
+				article: this.props.article,
+				title: this.props.article.title,
+				// body: this.props.article.body,
+				author: this.props.article.author,
+				subtitle: this.props.article.subtitle,
+				quote: this.props.article.quote,
+				images: this.props.article.images,
+				body: RichTextEditor.createValueFromString(this.props.article.body, 'html'),
+			})
 		}
 	}
 
 	uploadImage = response => {
+		// debugger
+		if (this.props.article.images[0] !== undefined) {
 		let filestack = client.init(process.env.REACT_APP_FILESTACK_API, {
 			policy: process.env.REACT_APP_FILESTACK_POLICY,
 			signature: process.env.REACT_APP_FILESTACK_SIGNATURE
 		})
-		filestack.remove(this.props.article.images[0].handle)
-		// console.log(this.props.article.images)
-		let img_id = this.props.article.images[0].id
-		fetch(process.env.REACT_APP_HOST+`/images/${img_id}`, {
-			method: 'DELETE'
-		})
+			filestack.remove(this.props.article.images[0].handle)
+			let img_id = this.props.article.images[0].id
+			fetch(process.env.REACT_APP_HOST + `/images/${img_id}`, {
+				method: 'DELETE'
+			})
+		}
 
-		fetch(process.env.REACT_APP_HOST+'/images', {
+		fetch(process.env.REACT_APP_HOST + '/images', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -73,7 +110,7 @@ class ArticleContainer extends React.Component {
 		let articleObj = {
 			title: this.state.title,
 			author: this.state.author,
-			body: this.state.body,
+			body: this.state.body.toString('html'),
 			subtitle: this.state.subtitle,
 			quote: this.state.quote,
 			images: []
@@ -92,8 +129,8 @@ class ArticleContainer extends React.Component {
 			<Container style={{ marginBottom: '30px', marginTop: '30px' }}>
 				<Grid>
 					<Grid.Row columns={1}>
-						<Grid.Column width={3} />
-						<Grid.Column width={10}>
+						<Grid.Column width={1} />
+						<Grid.Column width={14}>
 							<ReactFilestack
 								options={{
 									accept: 'image/*',
@@ -116,16 +153,16 @@ class ArticleContainer extends React.Component {
 									</Button>
 								)}
 							/>
-							{this.props.article.images ? (
-								<Image src={this.props.article.images[0].url} />
-							) : null}
+						{this.props.article.images[0] ? (
+								<Image src={this.props.article.images[0].url} style={{minWidth: '100%'}}/>
+							) : <Image src='http://thechurchontheway.org/wp-content/uploads/2016/05/placeholder1.png' style={{minWidth: '100%'}}/> }
 						</Grid.Column>
-						<Grid.Column width={3} />
+						<Grid.Column width={1} />
 					</Grid.Row>
 
 					<Grid.Row columns={3}>
-						<Grid.Column width={4} />
-						<Grid.Column width={8}>
+						<Grid.Column width={2} />
+						<Grid.Column width={12}>
 							<Form onSubmit={this.articleChange}>
 								<Form.Field>
 									<label>Author</label>
@@ -154,14 +191,15 @@ class ArticleContainer extends React.Component {
 										onChange={this.handleChange}
 									/>
 								</Form.Field>
-								<Form.Field
-									style={{ height: '-webkit-fill-available' }}
-									label="Text"
-									control="textarea"
+								<Form.Field>
+								<label>Text</label>
+								<RichTextEditor
 									value={this.state.body}
-									onChange={this.handleChange}
-									name="body"
+									onChange={this.onChange}
+									toolbarConfig={toolbarConfig}
 								/>
+							</Form.Field>
+
 								<Form.Field>
 									<label>Quote</label>
 									<input
@@ -171,11 +209,11 @@ class ArticleContainer extends React.Component {
 										onChange={this.handleChange}
 									/>
 								</Form.Field>
-								<Button type="submit">Update</Button>
+								<Button type="submit" primary>Update</Button>
 								<Button onClick={this.handleCancel}>Cancel</Button>
 							</Form>
 						</Grid.Column>
-						<Grid.Column width={4} />
+						<Grid.Column width={2} />
 					</Grid.Row>
 				</Grid>
 			</Container>
@@ -188,6 +226,15 @@ const mapStateToProps = state => {
 		currentUser: state.login.auth.currentUser
 	}
 }
+
+// <Form.Field
+// 	style={{ height: '-webkit-fill-available' }}
+// 	label="Text"
+// 	control="textarea"
+// 	value={this.state.body}
+// 	onChange={this.handleChange}
+// 	name="body"
+// />
 
 export default connect(mapStateToProps, { updateArticle, fetchArticles })(
 	ArticleContainer
