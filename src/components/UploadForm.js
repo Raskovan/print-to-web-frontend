@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Segment, Button } from 'semantic-ui-react'
 import { fetchArticles } from '../actions/UserActions'
-import ReactFilestack from 'filestack-react'
+import ReactFilestack, { client } from 'filestack-react'
 
 class UploadForm extends React.Component {
 	state = {
@@ -35,7 +35,18 @@ class UploadForm extends React.Component {
 	}
 
 	uploadImage = response => {
-		console.log(response);
+		// console.log(response.filesUploaded[0].url)
+		const filestack = client.init(process.env.REACT_APP_FILESTACK_API)
+		const options = {
+			resize: {  width: 700 },
+			crop: {
+				dim: {
+					x: 10, y: 10, width: 670, height: 420
+				}
+			}
+		}
+		let newImg = filestack.transform(response.filesUploaded[0].url, options)
+		// console.log(newImg);
 		fetch(process.env.REACT_APP_HOST + 'images', {
 			method: 'POST',
 			headers: {
@@ -44,8 +55,14 @@ class UploadForm extends React.Component {
 			},
 			body: JSON.stringify({
 				article_id: this.state.article.id,
-				url: response !== 'placeholder' ? response.filesUploaded[0].url : 'http://thechurchontheway.org/wp-content/uploads/2016/05/placeholder1.png',
-				handle: response !== 'placeholder' ? response.filesUploaded[0].handle : 'placeholder'
+				url:
+					response !== 'placeholder'
+						? newImg
+						: 'http://thechurchontheway.org/wp-content/uploads/2016/05/placeholder1.png',
+				handle:
+					response !== 'placeholder'
+						? response.filesUploaded[0].handle
+						: 'placeholder'
 			})
 		})
 			.then(r => r.json())
@@ -108,12 +125,14 @@ class UploadForm extends React.Component {
 								buttonClass="classname"
 								onSuccess={this.uploadImage}
 								render={({ onPick }) => (
-									<Button color='red' onClick={onPick}>
+									<Button positive onClick={onPick}>
 										Upload Your Image
 									</Button>
 								)}
 							/>
-						<Button onClick={() => this.uploadImage('placeholder')}>Upload Later</Button>
+							<Button onClick={() => this.uploadImage('placeholder')}>
+								Upload Later
+							</Button>
 						</Button.Group>
 					</Segment>
 				) : null}

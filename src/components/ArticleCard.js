@@ -16,6 +16,7 @@ class ArticleCard extends React.Component {
 		divId.innerHTML = this.props.article.body.substring(0, 150) + '...'
 	}
 	render(){
+		// console.log(this.props.article.images[0].url);
 	return (
 		<Card as={Link} to={'/magazines/' + this.props.magName + '/' + this.props.article.title} style={{borderRadius: '0'}}>
 			{this.props.article.images[0] ?

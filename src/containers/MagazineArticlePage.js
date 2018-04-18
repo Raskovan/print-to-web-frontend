@@ -11,7 +11,7 @@ class ArticlePage extends React.Component {
 	componentDidMount() {
 		fetch(
 			process.env.REACT_APP_HOST +
-				`/articles/${this.props.magname}/${this.props.articleName}`
+				`articles/${this.props.magname}/${this.props.articleName}`
 		)
 			.then(response => response.json())
 			.then(response =>

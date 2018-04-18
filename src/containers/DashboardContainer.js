@@ -18,6 +18,7 @@ import { logout } from '../actions/UserAuth'
 import { fetchArticles } from '../actions/UserActions'
 
 class DashboardContainer extends React.Component {
+
 	componentDidMount() {
 		if (!this.props.currentUser) {
 			this.props.history.push('/')
@@ -26,9 +27,12 @@ class DashboardContainer extends React.Component {
 		}
 	}
 
+	handleLoad () {
+		console.log('Loading');
+	}
+
 	render() {
-		let url
-		this.props.currentUser ? (url = this.props.currentUser.mag_url) : null
+		let url =	this.props.currentUser ? this.props.currentUser.mag_url : null
 
 		let iframe = document.querySelector('iframe')
 		if (iframe) {
@@ -100,6 +104,7 @@ class DashboardContainer extends React.Component {
 									<Divider />
 								</Header>
 								<Item.Group divided>
+
 									{this.props.articles
 										? this.props.articles
 												.sort((a, b) => {
@@ -111,10 +116,12 @@ class DashboardContainer extends React.Component {
 															key={article.id}
 															article={article}
 															mag_url={this.props.currentUser.mag_url}
+															handleLoading={this.handleLoad}
 														/>
 													)
 												})
 										: null}
+
 								</Item.Group>
 							</Grid.Column>
 						</Grid.Row>

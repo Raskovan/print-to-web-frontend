@@ -70,6 +70,15 @@ class ArticleContainer extends React.Component {
 	}
 
 	uploadImage = response => {
+    const filestack = client.init(process.env.REACT_APP_FILESTACK_API)
+    const options = {
+      crop: {
+        dim: {
+          x: 10, y: 10, width: 670, height: 420
+        }
+      }
+    }
+    let newImg = filestack.transform(response.filesUploaded[0].url, options)
 		// debugger
 		if (this.props.article.images[0] !== undefined) {
 		let filestack = client.init(process.env.REACT_APP_FILESTACK_API, {
@@ -91,7 +100,7 @@ class ArticleContainer extends React.Component {
 			},
 			body: JSON.stringify({
 				article_id: this.state.article.id,
-				url: response.filesUploaded[0].url,
+				url: newImg,
 				handle: response.filesUploaded[0].handle
 			})
 		})

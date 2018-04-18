@@ -54,8 +54,7 @@ class NavBarSeman extends Component {
 	closeLog = () => this.setState({ openLog: false })
 
 	render() {
-		let user
-		this.props.currentUser ? (user = this.props.currentUser.username) : null
+		let user = this.props.currentUser ? this.props.currentUser.username : null
 		// console.log('navbarsem', user)
 		let minHeight
 		user ? (minHeight = 50) : (minHeight = 650)
@@ -143,6 +142,7 @@ class NavBarSeman extends Component {
 															autoFocus
 														/>
 														<Form.Input
+															type='password'
 															name="password"
 															placeholder="Password"
 															onChange={this.handleInput}

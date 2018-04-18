@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { client } from 'filestack-react'
 
 class Article extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
 		this.handleDelete = this.handleDelete.bind(this)
 	}
@@ -17,7 +17,10 @@ class Article extends React.Component {
 			policy: process.env.REACT_APP_FILESTACK_POLICY,
 			signature: process.env.REACT_APP_FILESTACK_SIGNATURE
 		})
-		if (typeof this.props.article.images[0] !== 'undefined' && this.props.article.images[0].handle !== 'placeholder') {
+		if (
+			typeof this.props.article.images[0] !== 'undefined' &&
+			this.props.article.images[0].handle !== 'placeholder'
+		) {
 			filestack.remove(this.props.article.images[0].handle)
 		}
 	}
@@ -32,13 +35,27 @@ class Article extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.article.images[0].url);
 		return (
 			<Item>
 				{this.props.article.images[0] ? (
 					<Item.Image size="small" src={this.props.article.images[0].url} />
-				) : <Item.Image size="small" src='http://thechurchontheway.org/wp-content/uploads/2016/05/placeholder1.png' />}
+				) : (
+					<Item.Image
+						size="small"
+						src="http://thechurchontheway.org/wp-content/uploads/2016/05/placeholder1.png"
+					/>
+				)}
 				<Item.Content>
-					<Item.Header as="a" href={process.env.REACT_APP_URL + `magazines/${this.props.mag_url}/` + this.props.article.title }>{this.props.article.title}</Item.Header>
+					<Item.Header
+						as="a"
+						href={
+							process.env.REACT_APP_URL +
+							`magazines/${this.props.mag_url}/` +
+							this.props.article.title
+						}>
+						{this.props.article.title}
+					</Item.Header>
 					<Item.Description>
 						<p id={this.props.article.id} align="left" />
 					</Item.Description>

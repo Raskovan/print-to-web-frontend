@@ -12,7 +12,7 @@ class MagazineDirectory extends React.Component {
 	render() {
 		return (
       <Container style={{marginTop: '70px'}}>
-				<Card.Group itemsPerRow={5}>
+				<Card.Group itemsPerRow={3}>
 					{this.props.users
 						? this.props.users.map(user => {
 								return <UserCard key={user.id} user={user} />
