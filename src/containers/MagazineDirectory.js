@@ -10,7 +10,6 @@ class MagazineDirectory extends React.Component {
 	}
 
 	render() {
-		console.log('Directory', this.props)
 		return (
       <Container style={{marginTop: '70px'}}>
 				<Card.Group itemsPerRow={5}>

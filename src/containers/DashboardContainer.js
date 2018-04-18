@@ -169,7 +169,7 @@ class DashboardContainer extends React.Component {
 								/>
 							</Grid.Column>
 						</Grid.Row>
-						<Grid.Row>
+						<Grid.Row style={{marginTop: '3em'}}>
 							<Grid.Column textAlign="center">
 								<Button icon as='a' href={require('../img/tagging.gif')} download size="huge">
 									<Icon name='download'/>

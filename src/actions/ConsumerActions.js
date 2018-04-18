@@ -13,7 +13,6 @@ export const findUser = (url, route) => {
 }
 
 export const getAllUsers = (route) => {
-  console.log('Actions');
 	return dispatch => {
 		return RestfulAdapter.getUsers('users').then(response => {
 			if (response.message) {
