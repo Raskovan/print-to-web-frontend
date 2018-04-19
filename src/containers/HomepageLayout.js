@@ -85,17 +85,17 @@ class HomepageLayout extends React.Component {
 				</Segment>
 				<Segment style={{ padding: '0em' }} vertical>
 					<Grid celled="internally" columns="equal" stackable>
-						<Grid.Row textAlign="center">
-							<Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-								<Header as="h3" style={{ fontSize: '2em' }}>
+						<Grid.Row textAlign="center" style={{backgroundColor: '#a6d8f4'}}>
+							<Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }} verticalAlign='middle'>
+								<Header as="h3" style={{ fontSize: '3em', fontWeight: '300' }}>
 									"Wow!!!"
 								</Header>
 								<p style={{ fontSize: '1.33em' }}>
 									That is what they all say about us
 								</p>
 							</Grid.Column>
-							<Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-								<Header as="h3" style={{ fontSize: '2em' }}>
+							<Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }} verticalAlign='middle'>
+								<Header as="h3" style={{ fontSize: '2.8em', fontWeight: '300' }}>
 									"I shouldn't have gone with their competitor."
 								</Header>
 								<p style={{ fontSize: '1.33em' }}>

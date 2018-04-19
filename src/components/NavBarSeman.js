@@ -57,7 +57,7 @@ class NavBarSeman extends Component {
 		let user = this.props.currentUser ? this.props.currentUser.username : null
 		// console.log('navbarsem', user)
 		let minHeight
-		user ? (minHeight = 50) : (minHeight = 650)
+		user ? (minHeight = 50) : (minHeight = '100vh')
 
 		const trigger = (
 			<span>

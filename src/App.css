@@ -33,7 +33,6 @@ body {
 .thumbnail iframe {
   width: 1440px;
   height: 1100px;
-
 }
 
 .thumbnail {
@@ -82,6 +81,10 @@ i.large.icon, i.large.icons {
 mark {
     background-color: #d9d9d9;
     color: black;
+}
+
+.ui.button {
+  border-radius: 0;
 }
 
 /* .thumbnail iframe {
