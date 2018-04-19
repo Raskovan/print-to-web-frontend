@@ -94,7 +94,7 @@ class UserMagForm extends React.Component {
 						<Form.TextArea
 							style={{ whiteSpace: 'pre-line' }}
 							label="Magazine Description"
-							placeholder="Tell us more about your magazine..."
+							placeholder="Your magzine will not appear in our directory unless you give it a description."
 							name="mag_description"
 							value={this.state.mag_description}
 							onChange={this.handleInput}

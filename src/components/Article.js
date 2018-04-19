@@ -48,9 +48,7 @@ class Article extends React.Component {
 				<Item.Content>
 					<Item.Header
 						as="a"
-						href={
-							process.env.REACT_APP_URL +
-							`magazines/${this.props.mag_url}/` +
+						href={`/magazines/${this.props.mag_url}/` +
 							this.props.article.title
 						}>
 						{this.props.article.title}
