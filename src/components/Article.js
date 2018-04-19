@@ -35,7 +35,6 @@ class Article extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.article.images[0].url);
 		return (
 			<Item>
 				{this.props.article.images[0] ? (

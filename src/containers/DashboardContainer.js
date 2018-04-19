@@ -86,7 +86,7 @@ class DashboardContainer extends React.Component {
 									title="Thumbnail Image of your homepage">
 									<div className="thumbnail">
 										<iframe
-											src={process.env.REACT_APP_URL + 'magazines/' + url}
+											src={'magazines/' + url}
 											frameBorder="0"
 											title="HomePage"
 										/>
@@ -178,7 +178,7 @@ class DashboardContainer extends React.Component {
 						</Grid.Row>
 						<Grid.Row style={{marginTop: '3em'}}>
 							<Grid.Column textAlign="center">
-								<Button icon as='a' href={require('../img/tagging.gif')} download size="huge">
+								<Button icon as='a' href={require('../img/print-to-web-sample.zip')} download size="huge">
 									<Icon name='download'/>
 									Download a Layout Sample
 								</Button>

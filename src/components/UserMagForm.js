@@ -83,7 +83,7 @@ class UserMagForm extends React.Component {
 						/>
 						<Form.Field>
 							<Input
-								label={process.env.REACT_APP_URL}
+								label={process.env.REACT_APP_URL + 'magazines/'}
 								placeholder="my-magazine"
 								name="mag_url"
 								value={this.state.mag_url}
@@ -115,7 +115,7 @@ class UserMagForm extends React.Component {
 						<List.Item style={{ lineHeight: '2rem' }}>
 							<List.Header>Magazine URL</List.Header>
 							<a href={'/magazines/' + this.props.currentUser.mag_url}>
-								{process.env.REACT_APP_URL}{this.props.currentUser.mag_url}
+								{process.env.REACT_APP_URL + 'magazines/'}{this.props.currentUser.mag_url}
 							</a>
 						</List.Item>
 						<List.Item style={{ lineHeight: '2rem' }}>
