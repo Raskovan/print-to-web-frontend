@@ -84,8 +84,8 @@ class HomepageLayout extends React.Component {
 					</Grid>
 				</Segment>
 				<Segment style={{ padding: '0em' }} vertical>
-					<Grid celled="internally" columns="equal" stackable>
-						<Grid.Row textAlign="center" style={{backgroundColor: '#a6d8f4'}}>
+					<Grid columns="equal" stackable>
+						<Grid.Row textAlign="center" style={{backgroundColor: '#def3ff'}}>
 							<Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }} verticalAlign='middle'>
 								<Header as="h3" style={{ fontSize: '3em', fontWeight: '300' }}>
 									"Wow!!!"
