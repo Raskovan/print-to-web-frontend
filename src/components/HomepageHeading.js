@@ -4,7 +4,6 @@ import { fetchSignup } from '../actions/UserAuth'
 
 import {
 	Button,
-	Container,
 	Header,
 	Icon,
 	Modal,
@@ -39,7 +38,7 @@ class HomepageHeading extends Component {
 	render() {
 		const { open, size } = this.state
 		return (
-			<Grid verticalAlign="middle" style={{height: '75vh'}}>
+			<Grid verticalAlign="middle" style={{height: '80vh'}}>
 				<Grid.Row>
 					<Grid.Column textAlign="center">
 						<Header
@@ -48,7 +47,7 @@ class HomepageHeading extends Component {
 							inverted
 							style={{
 								fontFamily: 'Abril Fatface',
-								fontSize: '7.5em',
+								fontSize: '8vw',
 								fontWeight: 'normal',
 								marginBottom: '0.1em',
 								marginTop: '0em',
@@ -63,7 +62,7 @@ class HomepageHeading extends Component {
 							style={{
 								fontWeight: '300',
 								fontFamily: 'Roboto',
-								fontSize: '2em',
+								fontSize: '2.3vw',
 								marginTop: '0em',
 								marginBottom: '1.5em',
 								textShadow: '2px 2px 6px #000000',

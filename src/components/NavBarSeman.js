@@ -14,6 +14,7 @@ import {
 } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { logout, fetchSignup, fetchLogin } from '../actions/UserAuth'
+import magazines from '../img/magazines.jpg'
 
 class NavBarSeman extends Component {
 	state = {
@@ -95,10 +96,11 @@ class NavBarSeman extends Component {
 							minHeight: minHeight,
 							padding: '1em 0em',
 							background:
-								'url("https://cdn.filestackcontent.com/R45qr1rTtOJZD1BdPHh0")',
+								`url(${magazines})`,
 							backgroundSize: 'cover'
 						}}
 						vertical>
+
 						<Menu fixed={fixed ? 'top' : null} secondary={!fixed} size="large">
 							<Container>
 								<Menu.Item

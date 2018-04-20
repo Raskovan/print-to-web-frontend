@@ -36,16 +36,19 @@ class UploadForm extends React.Component {
 
 	uploadImage = response => {
 		// console.log(response.filesUploaded[0].url)
-		const filestack = client.init(process.env.REACT_APP_FILESTACK_API)
-		const options = {
-			resize: {  width: 700 },
-			crop: {
-				dim: {
-					x: 10, y: 10, width: 670, height: 420
+		let newImg
+		if (response !== 'placeholder') {
+			const filestack = client.init(process.env.REACT_APP_FILESTACK_API)
+			const options = {
+				resize: {  width: 700 },
+				crop: {
+					dim: {
+						x: 10, y: 10, width: 670, height: 420
+					}
 				}
 			}
+			newImg = filestack.transform(response.filesUploaded[0].url, options)
 		}
-		let newImg = filestack.transform(response.filesUploaded[0].url, options)
 		// console.log(newImg);
 		fetch(process.env.REACT_APP_HOST + 'images', {
 			method: 'POST',
