@@ -73,6 +73,9 @@ class HomepageHeading extends Component {
 							Get Started
 							<Icon name="right arrow" />
 						</Button>
+						<div style={{bottom: '30px', position: 'fixed', left: 0, right: 0}}>
+						<Icon name="angle down" size='big' />
+						</div>
 						<Modal size={size} open={open} onClose={this.close}>
 							<Modal.Header>Create Account</Modal.Header>
 							<Modal.Content>
