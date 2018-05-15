@@ -15,6 +15,8 @@ import {
 import { connect } from 'react-redux'
 import { logout, fetchSignup, fetchLogin } from '../actions/UserAuth'
 import magazines from '../img/magazines.jpg'
+import { Link } from 'react-router-dom'
+
 
 class NavBarSeman extends Component {
 	state = {
@@ -104,13 +106,13 @@ class NavBarSeman extends Component {
 						<Menu fixed={fixed ? 'top' : null} secondary={!fixed} size="large">
 							<Container>
 								<Menu.Item
-									as="a"
-									href="/"
+									as={Link}
+									to="/"
 									active
 									style={{ fontFamily: 'Abril Fatface' }}>
 									Print To Web
 								</Menu.Item>
-								<Menu.Item as="a" href="/magazines">
+								<Menu.Item as={Link} to="/magazines">
 									Directory
 								</Menu.Item>
 
