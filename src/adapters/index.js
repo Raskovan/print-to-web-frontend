@@ -52,7 +52,6 @@ export class RestfulAdapter {
   }
 
 	static getUsers(route) {
-		console.log('FETCH');
 		return fetch(`${baseUrl}${route}`)
 		.then(r => r.json())
 	}

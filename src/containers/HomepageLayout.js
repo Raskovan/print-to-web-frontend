@@ -22,6 +22,12 @@ class HomepageLayout extends React.Component {
 		password: ''
 	}
 
+	componentDidMount(){
+		if (this.props.currentUser) {
+			this.props.history.push('/dashboard')
+		}
+	}
+
 	handleInput = event => {
 		this.setState({
 			[event.target.name]: event.target.value

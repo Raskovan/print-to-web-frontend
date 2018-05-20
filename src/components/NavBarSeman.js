@@ -15,7 +15,7 @@ import {
 import { connect } from 'react-redux'
 import { logout, fetchSignup, fetchLogin } from '../actions/UserAuth'
 import magazines from '../img/magazines.jpg'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 class NavBarSeman extends Component {
@@ -97,8 +97,7 @@ class NavBarSeman extends Component {
 						style={{
 							minHeight: minHeight,
 							padding: '1em 0em',
-							background:
-								`url(${magazines})`,
+							background: `url(${magazines})`,
 							backgroundSize: 'cover'
 						}}
 						vertical>
@@ -106,7 +105,7 @@ class NavBarSeman extends Component {
 						<Menu fixed={fixed ? 'top' : null} secondary={!fixed} size="large">
 							<Container>
 								<Menu.Item
-									as={Link}
+									as={NavLink}
 									to="/"
 									active
 									style={{ fontFamily: 'Abril Fatface' }}>

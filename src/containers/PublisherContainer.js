@@ -24,11 +24,15 @@ class PublisherContainer extends React.Component {
 		return (
 			<div>
 				<NavBarSeman {...this.props} />
-				<Route exact path="/" component={HomepageLayout} />
+				<Route exact path="/"
+					render={renderProps => {
+						return <HomepageLayout {...this.props}/>}
+						}
+				/>
 				<Route exact path="/dashboard" component={DashboardContainer} />
 				{this.props.articles !== undefined ? (
 					<Route
-						path="/dashboard/articles/:id"
+						exact path="/dashboard/articles/:id"
 						render={renderProps => {
 							let articleId = renderProps.match.params.id
 							let foundArticle = this.props.articles.find(article => {

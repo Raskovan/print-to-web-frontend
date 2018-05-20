@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu, Popup, Container, Breadcrumb } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 class NavBarMag extends React.Component {
 	render() {
@@ -17,7 +17,7 @@ class NavBarMag extends React.Component {
 					<Menu.Item>
 						{'id' in this.props.user && this.props.show ? (
 							<Breadcrumb>
-								<Breadcrumb.Section color="red" as={Link} to="/">
+								<Breadcrumb.Section color="red" as={NavLink} to="/">
 									Print to web
 								</Breadcrumb.Section>
 								<Breadcrumb.Divider icon="right chevron" color="grey" />
@@ -38,7 +38,7 @@ class NavBarMag extends React.Component {
 									Print to web
 								</Breadcrumb.Section>
 								<Breadcrumb.Divider icon="right chevron" color="grey" />
-								<Breadcrumb.Section active as={Link} to="/magazines">
+								<Breadcrumb.Section active as={NavLink} to="/magazines">
 									Magazines
 								</Breadcrumb.Section>
 							</Breadcrumb>
